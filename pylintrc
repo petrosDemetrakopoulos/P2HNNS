@@ -1,0 +1,14 @@
+[FORMAT]
+max-line-length=125
+
+[BASIC]
+
+# Good variable names which should always be accepted, separated by a comma.
+good-names=M, NHSearch, Hash, Query, RandomSampler, SortedLCCS, HashBucket, EHHash, MHHash, NHHash, IdxVal, FHHash, CHECK_ERROR, R, EH_Method, BH_Method, MH_Method, RQALSH, BHHash
+[MESSAGES CONTROL]
+enable= 
+# Disable the message, report, category or checker with the given id(s). You
+# can either give multiple identifier separated by comma (,) or put this option
+# multiple time (only on the command line, not in the configuration file where
+# it should appear only once).
+disable= R1711, C0200, C0114, W0107
