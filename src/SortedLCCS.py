@@ -70,7 +70,7 @@ class SortedLCCS:
         self.sortedidx = self.get_sort_idx(self.dim, self.n)
         self.nextidx = self.get_next_link(self.step)
 
-    def compare_dim(self,xs: np.array, ys: np.array, start: int, walked: int) -> CmpLoc:
+    def compare_dim_vectors(self,xs: np.array, ys: np.array, start: int, walked: int) -> CmpLoc:
         """
         Compares two arrays element-wise in a circular manner starting from a given index.
 
@@ -89,8 +89,14 @@ class SortedLCCS:
             x = xs[idx]
             y = ys[idx]
             if x != y:
-                return CmpLoc(i + walked, int(x > y) - int(x < y))
+                return CmpLoc(i + walked, np.sign(x-y))
         return CmpLoc(self.dim, 0)
+
+    def compare_dim_lambda(self, idx1, start=0):
+        def cmp(idx2):
+            matched = self.compare_dim_indices(idx1,idx2,start,0)
+            return matched.cmp
+        return cmp
 
     def compare_dim_indices(self,idx1: int, idx2: int, start: int, walked: int) -> CmpLoc:
         """
@@ -107,7 +113,7 @@ class SortedLCCS:
         """
         xp = self.data[idx1]
         yp = self.data[idx2]
-        return self.compare_dim(xp, yp, start, walked)
+        return self.compare_dim_vectors(xp, yp, start, walked)
 
     def get_sort_idx(self,dim:int, n:int) -> List[List[int]]:
         """
@@ -122,11 +128,15 @@ class SortedLCCS:
         """
         sorted_idx = [[i for i in range(n)] for _ in range(dim)]
         for d in range(dim):
-            cmp = cmp_to_key(lambda idx1, idx2, d=d: self.compare_dim_indices(idx1, idx2, d, 0).cmp)
-            sorted_idx[d].sort(key=cmp)
+           sorted_idx[d] = sorted(sorted_idx[d], key=lambda i, d=d: self.compare_dim_lambda(i, start=d)(i))
         return sorted_idx
 
-    def get_next_link(self,step: int) -> List[List[int]]:
+        # for d in range(dim):
+        #     cmp = cmp_to_key(lambda idx1, idx2, d=d: self.compare_dim_indices(idx1, idx2, d, 0).cmp)
+        #     sorted_idx[d].sort(key=cmp)
+        # return sorted_idx
+
+    def get_next_link(self,step: int) -> np.ndarray:
         """
         Creates links for each element to its successor in a dimensionally reduced search space.
 
@@ -134,12 +144,12 @@ class SortedLCCS:
             step (int): The step size for reducing dimensionality in the search process.
 
         Returns:
-            List[List[int]]: A list of lists where each sublist contains links to the next elements in the search space.
+            np.ndarray: A list of lists where each sublist contains links to the next elements in the search space.
         """
-        next_link = [[0] * self.n for _ in range(self.dim)]
+        next_link = np.zeros((self.dim, self.n), dtype=int)
         for d in range(self.dim - 1, -1, -1):
             next_dim = (d + step) % self.dim
-            next_order = [0] * self.n
+            next_order = np.zeros(self.n, dtype=int)
             for i in range(self.n):
                 next_order[self.sortedidx[next_dim][i]] = i
 
@@ -183,7 +193,7 @@ class SortedLCCS:
 
         for i in range(low + 1, high):
             dpi = self.get_data(query_dim, i)
-            loc = self.compare_dim(query, dpi, query_dim, min_dim)
+            loc = self.compare_dim_vectors(query, dpi, query_dim, min_dim)
 
             if loc.cmp == -1:
                 return Loc(i - 1, last_dim, loc.walked)
@@ -208,7 +218,7 @@ class SortedLCCS:
             CmpLoc: The result of the comparison and the distance walked.
         """
         dpa = self.get_data(query_dim, i)
-        return self.compare_dim(query, dpa, query_dim, prev)
+        return self.compare_dim_vectors(query, dpa, query_dim, prev)
 
     def binary_search_loc(self,query: np.array, query_dim: int, low: int, low_len: int, high: int, high_len: int) -> Loc:
         """
@@ -263,8 +273,8 @@ class SortedLCCS:
         high = self.n - 1
         datalow = self.get_data(query_dim, low)
         datahigh = self.get_data(query_dim, high)
-        low_loc = self.compare_dim(query, datalow, query_dim, 0)
-        high_loc = self.compare_dim(query, datahigh, query_dim, 0)
+        low_loc = self.compare_dim_vectors(query, datalow, query_dim, 0)
+        high_loc = self.compare_dim_vectors(query, datahigh, query_dim, 0)
 
         return self.binary_search_loc(query, query_dim, low, low_loc.walked,high, high_loc.walked)
 
@@ -318,9 +328,31 @@ class SortedLCCS:
         return Locs(idxes, lowlens, highlens)
 
     def search(self,scan_step:int, query: np.array, f: Callable) -> Dict:
+        """
+        Searches for matches to the query in the dataset and applies a callable to each match.
+
+        Parameters:
+            scan_step (int): The step size for scanning in the search.
+            query (np.array): The query array.
+            f (Callable): A function to apply to each found index.
+
+        Returns:
+            Dict: A dictionary of checked indices and their counts.
+        """
         return self.candidates_by_scan(scan_step, query, f)
 
     def candidates_by_scan(self,scan_step: int, query: np.array, f: Callable) -> Dict:
+        """
+        Identifies candidate matches for the query by scanning the dataset and applies a callable to each.
+
+        Parameters:
+            scan_step (int): The step size for the scan.
+            query (np.array): The query array.
+            f (Callable): A function to apply to each found index.
+
+        Returns:
+            Dict: A dictionary with indices of candidates and the number of times each was checked.
+        """
         locs = self.find_matched_locs(query)
 
         checked = defaultdict(int)
