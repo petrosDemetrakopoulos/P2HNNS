@@ -2,7 +2,7 @@
 from copy import deepcopy
 import pytest
 import numpy as np
-from src.FHQuery import FHQuery
+from src import FHQuery
 #set seed for stability of random numbers
 np.random.seed(0)
 # Fixture to initialize and return a FHQuery object for each test

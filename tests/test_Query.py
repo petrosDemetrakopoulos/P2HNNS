@@ -2,7 +2,7 @@
 import numpy as np
 import pytest
 from src.distance_functions import Dist
-from src.Query import Query  # Adjust the import according to your project structure
+from src import Query  # Adjust the import according to your project structure
 
 class MockDist(Dist):
     """A mock distance function for testing purposes."""
