@@ -160,7 +160,7 @@ class NHHash(Hash):
         
         Parameters:
             param (Query): The query object containing the query hyperplane, distance function, and the number of nearest neighbors to find.
-        
+
         Returns:
             List[IdxVal]: The list of nearest neighbors and their distances to the query hyperplane.
         """

@@ -109,7 +109,7 @@ def test_dynamic_separation_counting_with_various_limits(setup_rqalsh):
     rqalsh = setup_rqalsh
     query = [IdxVal(idx, val) for idx, val in enumerate(np.random.rand(rqalsh.dim))]
     position = rqalsh.get_search_position(rqalsh.dim, query)
-    
+
     for limit in [1, rqalsh.n // 2, rqalsh.n * 2]:  # Testing various limits
         candidates = rqalsh.dynamic_separation_counting(1, limit, 0.1, position)
         assert len(candidates) <= limit, f"Number of candidates should not exceed the limit ({limit})."
@@ -124,9 +124,3 @@ def test_dynamic_separation_counting_with_small_radius(setup_rqalsh):
 def test_rqalsh_with_invalid_dimensions():
     with pytest.raises(ValueError):
         RQALSH(n=10, dim=-2, m=3, index=np.arange(10), norm=np.ones(10), data=[], scan_size=100, check_error=1e-6)
-
-
-
-
-if __name__ == "__main__":
-    pytest.main()

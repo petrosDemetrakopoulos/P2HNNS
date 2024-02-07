@@ -54,3 +54,14 @@ def hash_bucket_fixture():
 def test_with_fixture(hash_bucket_fixture):
     assert hash_bucket_fixture.l == 5
     assert len(hash_bucket_fixture.buckets) == 5
+
+def test_hashbucket_is_empty_when_new():
+    hash_bucket = HashBucket(n=100, l=5)
+    assert hash_bucket.is_empty() is True, "Expected HashBucket to be empty when newly created."
+
+def test_hashbucket_is_not_empty_after_insert():
+    hash_bucket = HashBucket(n=100, l=5)
+    # Creating a dummy hash code array to insert.
+    dcode = np.array([1, 2, 3, 4, 5])
+    hash_bucket.insert(key=1, dcode=dcode)
+    assert hash_bucket.is_empty() is False, "Expected HashBucket to not be empty after inserting an item."

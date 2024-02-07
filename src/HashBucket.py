@@ -26,6 +26,7 @@ class HashBucket:
                                                  returning an empty list if no items are found.
         swap(self, as_list, bs_list, aidx, bidx): Swaps items between two lists at specified indices.
         get_or_insert(self, map_obj, idx): Retrieves or initializes a list in a map for a given index.
+        is_empty(self): Returns True if no data has been added to the HashBucket, otherwise False.
     """
     def __init__(self, n: int, l: int):
         """
@@ -128,3 +129,12 @@ class HashBucket:
         if idx not in map_obj:
             map_obj[idx] = []
         return map_obj[idx]
+
+    def is_empty(self) -> bool:
+        """
+        Checks if the HashBucket is empty.
+
+        Returns:
+            bool: True if no data has been added to any of the hash tables, otherwise False.
+        """
+        return all(len(bucket) == 0 for bucket in self.buckets)
