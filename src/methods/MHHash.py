@@ -22,12 +22,15 @@ class MHHash(Hash):
         buckets (HashBucket): A collection of hash buckets for storing indexed data points.
 
     Methods:
-        __init__(self, dimension, m, l, M): Initializes the MHHash object with the specified dimensions, hash functions, and tables.
+        __init__(self, dimension, m, l, M): Initializes the MHHash object with the specified dimensions, 
+            hash functions, and tables.
         hash_data(self, data): Hashes the input data into `l` hash signatures, one for each hash table.
         hash_query(self, query): Similar to `hash_data`, but hashes a query for searching the index.
-        _hash(self, query, pos): A helper method to compute the hash value of a query/data point using the generated random vectors.
+        _hash(self, query, pos): A helper method to compute the hash value of a query/data point
+            using the generated random vectors.
         build_index(self, data): Indexes the provided dataset by hashing and storing the data points in the hash buckets.
-        nns(self, param): Performs a nearest neighbor search for the given query, returning the closest points based on the query parameters.
+        nns(self, param): Performs a nearest neighbor search for the given query,
+            returning the closest points based on the query parameters.
 
     Parameters for initialization:
         dimension (int): The dimensionality of the input data points.
@@ -45,7 +48,7 @@ class MHHash(Hash):
 
     def hash_data(self, data: np.array) -> np.array:
         """
-        Hashes the input data using the MH hashing scheme to generate bucket keys.
+        Hashes the input data using the MH hashing method to generate bucket keys.
 
         Paramters:
             data (np.array): A single data point to hash.
@@ -67,7 +70,7 @@ class MHHash(Hash):
 
     def hash_query(self, query: np.array) -> np.array:
         """
-        Hashes the query data using the MH hashing scheme, with a modification for query purposes to generate bucket keys.
+        Hashes the query data using the MH hashing method, with a modification for query purposes to generate bucket keys.
 
         Paramters:
             query (np.array): A single query point to hash.
@@ -89,7 +92,8 @@ class MHHash(Hash):
 
     def _hash(self, query: np.array, pos: int) -> float:
         """
-        Internal method to compute the hash value of a query/data point at a specific position using the stored random vectors.
+        Internal method to compute the hash value of a query/data point at a specific position
+        using the stored random vectors.
 
         Paramters:
             query (np.array): The query or data point to be hashed.
@@ -124,7 +128,7 @@ class MHHash(Hash):
         Performs a nearest neighbor search for the given query.
 
         Paramters:
-            param (Query): A `Query` object containing the query point, distance function, and other query parameters.
+            param (Query): A `Query` object containing the query hyperplane, distance function, and other query parameters.
 
         Returns:
             List[IdxVal]: A sorted list of `IdxVal` objects representing the nearest neighbors and their distances.

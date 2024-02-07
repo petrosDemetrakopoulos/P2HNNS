@@ -28,13 +28,8 @@ def test_dist_value_of():
     assert isinstance(Dist.value_of("ABS_DOT"), DistAbsDot)
     assert isinstance(Dist.value_of("COS"), DistCos)
     assert isinstance(Dist.value_of("DP2H"), DistDP2H)
-    # You can add more assertions here to test for default or erroneous inputs
 
 # Optional: Test the abstract class behavior (not instantiable, etc.)
 def test_dist_abstract_class():
     with pytest.raises(TypeError):
         Dist()  # Attempting to instantiate should raise TypeError
-
-# Run tests with pytest
-if __name__ == "__main__":
-    pytest.main()

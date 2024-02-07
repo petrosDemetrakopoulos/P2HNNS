@@ -21,8 +21,13 @@ class BHHash(Hash):
         randv (np.array): A numpy array of random vectors from a Gaussian distribution, second part of bilinear projection.
 
     Methods:
-        data(data: np.array) -> np.array: Hashes the input data array into binary hash codes.
-        query(query: np.array) -> np.array: Hashes the query data array into binary hash codes.
+        hash_data(data: np.array) -> np.array: Hashes the input data array into binary hash codes 
+                                               using the Bilinear hperplane method.
+        hash_query(query: np.array) -> np.array: Hashes a query into binary hash codes, 
+                                                 analogous to `hash_data` but tailored for query handling.
+        build_index(data: np.ndarray): Constructs the hash index for a dataset,
+                                       enabling efficient nearest neighbour searches.
+        nns(param: Query) -> List[IdxVal]: Performs a nearest neighbour search for a given query using the pre-built index.
 
     Parameters for initialization:
         d (int): The dimensionality of the input data vectors.
@@ -122,13 +127,13 @@ class BHHash(Hash):
         is limited by traversing only those buckets that match the query's hash code up to a specified Hamming distance.
 
         Parameters:
-        - param (Query): A Query object containing the query hyperplane, the number of nearest neighbors to return (top),
-                        and the search limit (limit). The Query object also includes the dataset to search against,
-                        although not directly used here.
+            param (Query): A Query object containing the query hyperplane, the number of nearest neighbors to return (top),
+                           and the search limit (limit). The Query object also includes the dataset to search against,
+                           although not directly used here.
 
         Returns:
-        - List[IdxVal]: A list of IdxVal objects, each containing the index of a data point in the dataset and its
-                        distance to the query. The list is sorted by distance, ascending.
+            List[IdxVal]: A list of IdxVal objects, each containing the index of a data point in the dataset and its
+                          distance to the query. The list is sorted by distance, ascending.
         """
         assert self.buckets.is_empty() is False, "Index not created yet. You need to call create_index() before using nns() to query the index"
         data = param.data

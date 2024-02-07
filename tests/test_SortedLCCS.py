@@ -55,5 +55,3 @@ def test_find_matched_locs(sample_data):
     # For a perfect match, lowlens and highlens should reflect complete or near-complete matches
     assert all(l >= 0 for l in locs.lowlens), "Expected low lengths to be non-negative."
     assert all(h >= 0 for h in locs.highlens), "Expected high lengths to be non-negative."
-
-    # More specific assertions can be added based on the expected behavior of your dataset and algorithm

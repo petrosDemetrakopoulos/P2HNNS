@@ -9,9 +9,41 @@ from ..HashBucket import HashBucket
 
 class EHHash(Hash):
     """
-    Embedding Hyperplane(EH) Hash.
+    Implements the Embedding Hyperplane (EH) hashing method for efficient point-to-hyperplane nearest neighbour search.
+    This class provides functionality to hash data points and queries into binary signatures and perform fast
+    nearest neighbour searches using these signatures.
+
+    Attributes:
+        buckets (HashBucket): An object to manage the storage and retrieval of hashed data points.
+        m (int): The number of hyperplanes used for hashing each layer.
+        l (int): The number of layers in the hash function.
+        randv (np.array): A numpy array of random vectors used for hashing.
+
+    Methods:
+        hash_data(data: np.array) -> np.array: Hashes a given data point into a series of binary signatures
+                                               based on the embedding hyperplane method.
+        hash_query(query: np.array) -> np.array: Hashes a query into binary signatures,
+                                                 analogous to `hash_data` but tailored for query handling.
+        _hash(data: np.array, pos: int) -> float: A helper function that computes the hash value for a segment of the data
+                                                  using a subset of the random vectors.
+        build_index(data: np.ndarray): Constructs the hash index for a dataset,
+                                       enabling efficient nearest neighbour searches.
+        nns(param: Query) -> List[IdxVal]: Performs a nearest neighbour search for a given query using the pre-built index.
+
+    Parameters for initialization:
+        d (int): The dimensionality of the input data.
+        m (int): The number of hyperplanes used for hashing in each layer.
+        l (int): The number of hash layers used to increase the robustness of the search.
     """
     def __init__(self, d: int, m: int, l: int):
+        """
+        Initializes the EHHash object with specified dimensions and parameters.
+
+        Parameters:
+            d (int): The dimensionality of the input data.
+            m (int): The number of hyperplanes used for hashing each layer.
+            l (int): The number of layers in the hash function.
+        """
         self.buckets = HashBucket(d,l)
         self.m = m
         self.l = l
@@ -19,6 +51,15 @@ class EHHash(Hash):
         self.randv = np.random.normal(0.0, 1.0, size)
 
     def hash_data(self, data: np.array):
+        """
+        Hashes the input data into binary signatures based on the EH hashing method.
+
+        Parameters:
+            data (np.array): The data point to hash, represented as a numpy array.
+
+        Returns:
+            np.array: An array of integers representing the binary signatures of the hashed data.
+        """
         assert len(self.randv) == self.m * self.l * len(data) * len(data)
         sigs = np.zeros(self.l, dtype=int)
         for i in range(self.l):
@@ -32,6 +73,15 @@ class EHHash(Hash):
         return sigs
 
     def hash_query(self, query: np.array) -> np.array:
+        """
+        Hashes the query data into binary signatures, similar to `hash_data` but tailored for queries.
+
+        Parameters:
+            query (np.array): The query data point to hash, represented as a numpy array.
+
+        Returns:
+            np.array: An array of integers representing the binary signatures of the hashed query.
+        """
         assert len(self.randv) == self.m * self.l * len(query) * len(query)
         sigs = np.zeros(self.l, dtype=int)
         for i in range(self.l):
@@ -45,6 +95,16 @@ class EHHash(Hash):
         return sigs
 
     def _hash(self, data: np.array, pos: int) -> float:
+        """
+        A helper method to compute the hash value of a data point or query at a specified position.
+
+        Parameters:
+            data (np.array): The data point or query to hash.
+            pos (int): The position in the random vector to start hashing.
+
+        Returns:
+            float: The hash value of the data.
+        """
         n = len(data)
         # Reshape data for broadcasting
         data = data.reshape(n, 1)
@@ -57,6 +117,12 @@ class EHHash(Hash):
         return val
 
     def build_index(self, data: np.ndarray):
+        """
+        Builds the hash index for a given dataset.
+
+        Parameters:
+            data (np.ndarray): The dataset to index, where each row is a data point.
+        """
         n = len(data)
         print("-- Building index... --")
         for i in tqdm(range(n)):
@@ -64,6 +130,16 @@ class EHHash(Hash):
             self.buckets.insert(i, sig)
 
     def nns(self, param: Query) -> List[IdxVal]:
+        """
+        Performs a nearest neighbour search (NNS) for a given query.
+
+        Parameters:
+            param (Query): A Query object containing the query hyperplane, distance function, and search parameters.
+
+        Returns:
+            List[IdxVal]: A list of IdxVal objects, where each IdxVal contains the index 
+                          of a data point and its distance to the query, sorted by distance.
+        """
         assert self.buckets.is_empty() is False, "Index not created yet. You need to call create_index() before using nns() to query the index"
         data = param.data
         query = param.query

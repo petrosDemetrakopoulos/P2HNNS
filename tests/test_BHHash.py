@@ -40,9 +40,7 @@ def test_build_index(bhhash_setup):
     bhhash = bhhash_setup
     data = np.random.rand(10, 10)
     bhhash.build_index(data)
-    # Testing build_index might require inspecting the internal state of the hash buckets.
-    # This could be as simple as checking if a non-empty structure exists or more complex,
-    # depending on the HashBucket implementation.
+    assert bhhash.buckets.is_empty() is False
 
 def test_nns(bhhash_setup):
     bhhash = bhhash_setup
