@@ -76,7 +76,8 @@ class RQALSH:
         dynamic_separation_counting: Dynamically count and identify candidate data points close to the query.
         fns: Find the nearest neighbors for a given query.
     """
-    def __init__(self, n:int , dim: int, m: int, index: np.array, norm: np.array, data:List[List[IdxVal]], scan_size=1600, check_error=10e-6):
+    def __init__(self, n:int , dim: int, m: int, index: np.array, norm: np.array,
+                 data:List[List[IdxVal]], scan_size=1600, check_error=10e-6):
         self.n = n
         self.dim = dim
         self.m = m
@@ -262,7 +263,7 @@ class RQALSH:
                         param.freq[idx] += 1
                         if param.freq[idx] >= l and not param.checked[idx]:
                             param.checked[idx] = True
-                            if self.index:
+                            if self.index is not None:
                                 param.cands.append(self.index[idx])
                             else:
                                 param.cands.append(idx)
@@ -288,7 +289,7 @@ class RQALSH:
                         param.freq[idx] += 1
                         if param.freq[idx] >= l and not param.checked[idx]:
                             param.checked[idx] = True
-                            if self.index:
+                            if self.index is not None:
                                 param.cands.append(self.index[idx])
                             else:
                                 param.cands.append(idx)

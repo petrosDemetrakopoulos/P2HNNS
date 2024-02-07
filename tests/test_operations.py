@@ -1,5 +1,4 @@
 # pylint: disable=W0621, C0116, C0115, W0201, W0401
-import pytest
 import numpy as np
 from src.operations import *
 
@@ -42,7 +41,3 @@ def test_dim():
     assert dim(data) == 3
     empty_data = np.array([])
     assert dim(empty_data) == 0
-
-# Run tests with pytest
-if __name__ == "__main__":
-    pytest.main()

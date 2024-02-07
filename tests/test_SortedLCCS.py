@@ -46,7 +46,7 @@ def test_find_matched_locs(sample_data):
     query = sample_data.data[query_index]
 
     locs = sample_data.find_matched_locs(query)
-    
+
     # Check if the first matched location's index points to the last index (1st object should be matched to the last)
     # This assumes the data and the query match perfectly in at least one dimension
     assert 5 in locs.idxes, "Expected at least one matching location index to point to the query's index."
@@ -57,4 +57,3 @@ def test_find_matched_locs(sample_data):
     assert all(h >= 0 for h in locs.highlens), "Expected high lengths to be non-negative."
 
     # More specific assertions can be added based on the expected behavior of your dataset and algorithm
-
