@@ -127,7 +127,7 @@ class SortedLCCS:
         """
         sorted_idx = [[i for i in range(n)] for _ in range(dim)]
         for d in range(dim):
-           sorted_idx[d] = sorted(sorted_idx[d], key=lambda i, d=d: self.compare_dim_lambda(i, start=d)(i))
+            sorted_idx[d] = sorted(sorted_idx[d], key=lambda i, d=d: self.compare_dim_lambda(i, start=d)(i))
         return sorted_idx
 
         # for d in range(dim):
