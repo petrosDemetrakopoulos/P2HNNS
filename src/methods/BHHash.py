@@ -9,25 +9,25 @@ from ..HashBucket import HashBucket
 
 class BHHash(Hash):
     """
-    Implements the Bilinear Hyperplane Hash (BHHash) for hashing data points into binary hash codes.
+    Implements the Bilinear Hyperplane (BH) hashing method for efficient point-to-hyperplane nearest neighbor searches.
     This class generates hash codes by projecting data points onto random hyperplanes generated from
     Gaussian distributions. The hash code for a data point is determined by the sign of the dot product
     between the data point and each pair of random vectors, allowing for the capture of bilinear interactions.
 
     Attributes:
-    - m (int): The number of hyperplanes used for each hash function.
-    - l (int): The number of hash functions (or hash tables).
-    - randu (np.array): A numpy array of random vectors from a Gaussian distribution, first part of bilinear projection.
-    - randv (np.array): A numpy array of random vectors from a Gaussian distribution, second part of bilinear projection.
+        m (int): The number of hyperplanes used for each hash function.
+        l (int): The number of hash functions (or hash tables).
+        randu (np.array): A numpy array of random vectors from a Gaussian distribution, first part of bilinear projection.
+        randv (np.array): A numpy array of random vectors from a Gaussian distribution, second part of bilinear projection.
 
     Methods:
-    - data(data: np.array) -> np.array: Hashes the input data array into binary hash codes.
-    - query(query: np.array) -> np.array: Hashes the query data array into binary hash codes.
+        data(data: np.array) -> np.array: Hashes the input data array into binary hash codes.
+        query(query: np.array) -> np.array: Hashes the query data array into binary hash codes.
 
     Parameters for initialization:
-    - d (int): The dimensionality of the input data vectors.
-    - m (int): The number of hyperplanes for each hash function.
-    - l (int): The number of hash functions to generate.
+        d (int): The dimensionality of the input data vectors.
+        m (int): The number of hyperplanes for each hash function.
+        l (int): The number of hash functions to generate.
     """
     def __init__(self, d: int, m: int, l: int):
         """
@@ -35,9 +35,9 @@ class BHHash(Hash):
         for projecting the data points onto the bilinear hyperplanes.
 
         Parameters:
-        - d (int): The dimensionality of the input data.
-        - m (int): The number of hyperplanes per hash function.
-        - l (int): The number of hash functions.
+            d (int): The dimensionality of the input data.
+            m (int): The number of hyperplanes per hash function.
+            l (int): The number of hash functions.
         """
         self.buckets = HashBucket(d,l)
         self.m = m
@@ -53,10 +53,10 @@ class BHHash(Hash):
         of the bilinear product for each projection to form the hash code.
 
         Parameters:
-        - data (np.array): The input data array to be hashed.
+            data (np.array): The input data array to be hashed.
 
         Returns:
-        - np.array: An array of integers representing the binary hash codes of the input data.
+            np.array: An array of integers representing the binary hash codes of the input data.
         """
         assert len(self.randu) == self.m * self.l * len(data)
         sigs = np.zeros(self.l, dtype=int)
@@ -77,10 +77,10 @@ class BHHash(Hash):
         This allows the hashing process to be applied specifically to query points, potentially with different processing.
 
         Parameters:
-        - query (np.array): The query data array to be hashed.
+            query (np.array): The query data array to be hashed.
 
         Returns:
-        - np.array: An array of integers representing the binary hash codes of the query data.
+            np.array: An array of integers representing the binary hash codes of the query data.
         """
         assert len(self.randu) == self.m * self.l * len(query)
         sigs = np.zeros(self.l, dtype=int)
@@ -101,10 +101,10 @@ class BHHash(Hash):
         storing them in the appropriate buckets.
 
         Parameters:
-        - data (np.ndarray): The dataset to be inserted into the hash table. Each row represents a data point.
+            data (np.ndarray): The dataset to be inserted into the hash table. Each row represents a data point.
 
         Returns:
-        None
+            None
         """
         n = len(data)
         print("-- Building index... --")
@@ -130,6 +130,7 @@ class BHHash(Hash):
         - List[IdxVal]: A list of IdxVal objects, each containing the index of a data point in the dataset and its
                         distance to the query. The list is sorted by distance, ascending.
         """
+        assert self.buckets.is_empty() is False, "Index not created yet. You need to call create_index() before using nns() to query the index"
         data = param.data
         query = param.query
         top = param.top

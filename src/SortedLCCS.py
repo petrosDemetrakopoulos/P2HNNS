@@ -130,11 +130,6 @@ class SortedLCCS:
             sorted_idx[d] = sorted(sorted_idx[d], key=lambda i, d=d: self.compare_dim_lambda(i, start=d)(i))
         return sorted_idx
 
-        # for d in range(dim):
-        #     cmp = cmp_to_key(lambda idx1, idx2, d=d: self.compare_dim_indices(idx1, idx2, d, 0).cmp)
-        #     sorted_idx[d].sort(key=cmp)
-        # return sorted_idx
-
     def get_next_link(self,step: int) -> np.ndarray:
         """
         Creates links for each element to its successor in a dimensionally reduced search space.

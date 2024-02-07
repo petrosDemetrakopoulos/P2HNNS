@@ -64,6 +64,7 @@ class EHHash(Hash):
             self.buckets.insert(i, sig)
 
     def nns(self, param: Query) -> List[IdxVal]:
+        assert self.buckets.is_empty() is False, "Index not created yet. You need to call create_index() before using nns() to query the index"
         data = param.data
         query = param.query
         top = param.top
