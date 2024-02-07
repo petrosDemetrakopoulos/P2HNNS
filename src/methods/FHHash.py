@@ -9,6 +9,16 @@ from .Hash import Hash
 from ..RQALSH import RQALSH
 
 class Transform:
+    """
+    A class representing the transformation of data for nearest neighbor search using the Furthest Hyperplane method.
+
+    Attributes:
+        norm (np.array): An array holding the L2 norms of the data points.
+        centroid (np.array): The centroid of the transformed data points in the hyperplane space.
+        samples (List[List[IdxVal]]): Sampled representation of the data points in the hyperplane space.
+        M (float): The maximum norm among all data points, used for normalization.
+        dist (List[IdxVal]): Sorted distances of the data points from a reference point in the hyperplane space.
+    """
     def __init__(self, norm: np.array, centroid: np.array, samples: List[List[IdxVal]], M: float, dist: List[IdxVal]):
         self.norm = norm
         self.centroid = centroid
@@ -17,7 +27,39 @@ class Transform:
         self.dist = dist
 
 class FHHash(Hash):
+    """
+    Implements the Furthest Hyperplane (FH) hashing method for efficient nearest neighbor search in high-dimensional data.
+
+    Attributes:
+        hashs (List): Container for RQALSH instances, each corresponding to a block of the dataset.
+        fhdim (int): The dimensionality of the data after transformation to the furthest hyperplane space.
+        sampler (RandomSampler): An instance of RandomSampler for sampling high-dimensional data points.
+        M (float): Maximum norm value among all data points, used in normalization.
+        b (float): The base radius for dividing the dataset into blocks.
+        m (int): The number of hash functions to be used in RQALSH.
+        max_blocks (int): Maximum number of blocks into which the dataset is divided.
+
+    Parameters for initalization:
+        d (int): Original dimensionality of the data.
+        s (int): Number of samples to be taken from each data point.
+        b (float): Base radius parameter for dataset division.
+        m (int): Number of hash functions for RQALSH.
+        max_blocks (int): Maximum number of data blocks.
+
+    """
     def __init__(self, d, s, b,m, max_blocks):
+        """
+        Initializes the FHHash instance.
+
+        Parameters:
+            d (int): Original dimensionality of the data.
+            s (int): Number of samples to be taken from each data point.
+            b (float): Base radius parameter for dataset division.
+            m (int): Number of hash functions for RQALSH.
+            max_blocks (int): Maximum number of data blocks.
+        """
+        if b > 1.0:
+            raise ValueError("b must be less than or equal to 1.0")
         self.hashs = []
         self.fhdim = d * (d + 1) // 2 + 1
         self.sampler = RandomSampler(d, s)
@@ -27,6 +69,15 @@ class FHHash(Hash):
         self.max_blocks = max_blocks
 
     def hash_data(self, data: np.ndarray) -> Transform:
+        """
+        Transforms and hashes the input data into the furthest hyperplane space for indexing.
+
+        Parameters:
+            data (np.ndarray): The high-dimensional data to be indexed.
+
+        Returns:
+            Transform: A Transform object containing the transformation results.
+        """
         n = len(data)
         norm = np.zeros(n)
         centroid = np.zeros(self.fhdim)
@@ -59,6 +110,19 @@ class FHHash(Hash):
         return Transform(norm, centroid, samples, M, arr)
 
     def calc_transform_dist(self, fhdim: int, last: float, l2centroid: float, sample: List[IdxVal], centroid: np.array):
+        """
+        Calculates the transformed distance between a data point and the centroid in the hyperplane space.
+
+        Parameters:
+            fhdim (int): Dimensionality of the furthest hyperplane space.
+            last (float): The component of the centroid corresponding to the added dimension.
+            l2centroid (float): The L2 norm of the centroid in the hyperplane space.
+            sample (List[IdxVal]): The sampled representation of a data point.
+            centroid (np.array): The centroid of the data in the hyperplane space.
+
+        Returns:
+            float: The transformed distance.
+        """
         dist = l2centroid
 
         for i in range(len(sample)):
@@ -74,6 +138,12 @@ class FHHash(Hash):
         return np.sqrt(dist)
 
     def build_index(self, data: np.ndarray):
+        """
+        Builds the indexing structure for the given data using the Furthest Hyperplane hashing method.
+
+        Parameters:
+            data (np.ndarray): The high-dimensional data to be indexed.
+        """
         n = len(data)
         norm = self.hash_data(data)
         self.M = norm.M
@@ -110,9 +180,27 @@ class FHHash(Hash):
         assert start == n
 
     def query(self, query):
+        """
+        Samples a query point for nearest neighbor search.
+
+        Parameters:
+            query: The query point in the original high-dimensional space.
+
+        Returns:
+            The sampled representation of the query point.
+        """
         return self.sampler.sampling(query)
 
     def get_sample_query(self,query: np.array) -> List[IdxVal]:
+        """
+        Transforms a query point into the furthest hyperplane space for querying the index.
+
+        Parameters:
+            query (np.array): The query point in the original high-dimensional space.
+
+        Returns:
+            List[IdxVal]: The transformed and sampled representation of the query point.
+        """
         # calculate sampleQuery with query transformation
         sample = self.query(query)
         norm = self.norm(sample)
@@ -125,6 +213,15 @@ class FHHash(Hash):
         return sample
 
     def nns(self, param: FHQuery) -> List[IdxVal]:
+        """
+        Performs the nearest neighbor search for a given query in the indexed data.
+
+        Parameters:
+            param (FHQuery): An object containing the query details and search parameters.
+
+        Returns:
+            List[IdxVal]: The nearest neighbors to the query point.
+        """
         data, query = param.data, param.query
         l, top = param.l, param.top
 
@@ -165,7 +262,13 @@ class FHHash(Hash):
 
     def norm(self, idxvals: List[IdxVal]) -> float:
         """
-        L2-norm squared of f(o)
+        Calculates the L2-norm squared of the feature vector represented by IdxVal objects.
+
+        Parameters:
+            idxvals (List[IdxVal]): The feature vector represented as a list of IdxVal objects.
+
+        Returns:
+            float: The L2-norm squared of the feature vector.
         """
         norm = 0.0
         for w in idxvals:

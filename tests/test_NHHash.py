@@ -46,7 +46,6 @@ def test_hash_query(nh_hash_setup):
 
 def test_nns(nh_hash_setup):
     nh_hash = nh_hash_setup
-    # This test might need to be adjusted based on your actual implementations
     mock_data = np.random.rand(100, 5)  # 100 random data points
     query = Query(query=np.random.rand(5), data=mock_data, top=5, limit=1000, dist=DistAbsDot())
     nh_hash.build_index(data=mock_data)
