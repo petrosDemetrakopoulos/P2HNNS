@@ -4,12 +4,36 @@ from .IdxVal import IdxVal
 from .operations import dot
 
 class SearchPosition:
+    """
+    Represents the positions within hash tables for a query.
+
+    Attributes:
+        query_val (np.array): The hash value of the query.
+        left_pos (np.array): The left boundary positions in the hash tables for the query.
+        right_pos (np.array): The right boundary positions in the hash tables for the query.
+    """
     def __init__(self, query_val: np.array, left_pos: np.array, right_pos: np.array):
         self.query_val = query_val
         self.left_pos = left_pos
         self.right_pos = right_pos
 
 class CountParam:
+    """
+    Encapsulates parameters for the counting process in RQALSH.
+
+    Attributes:
+        n (int): The number of data points.
+        m (int): The number of hash tables.
+        freq (List[int]): A frequency list to track the number of occurrences for each data point.
+        rangeflag (List[bool]): Flags to indicate if a data point is within the search range in each hash table.
+        bucketflag (List[bool]): Flags to indicate if a data point is within the current bucket being scanned in each hash table.
+        checked (List[bool]): Flags to indicate if a data point has been checked.
+        rangeval (float): The value representing the search range.
+        bucket (int): The number of buckets.
+        radius (float): The search radius.
+        width (float): The bucket width.
+        cands (List): A list of candidate data points.
+    """
     def __init__(self, n: int, m: int, radius: float, width: float):
         self.m = m
         # separation frequency for n data points
@@ -33,7 +57,24 @@ class CountParam:
 
 class RQALSH:
     """
-    Reverse Query-Aware LSH(RQALSH)
+    Implements the Reverse Query-Aware Locality Sensitive Hashing algorithm.
+
+    Attributes:
+        n (int): The number of data points.
+        dim (int): The dimensionality of the data points.
+        m (int): The number of hash tables.
+        index (np.array): The indices of the data points.
+        scan_size (int): The number of points to scan in each hash table.
+        check_error (float): The error tolerance for checking candidates.
+        a (np.array): The generated hash functions.
+        tables (List): The hash tables storing data points and their hash values.
+
+    Methods:
+        calc_hash_value, calc_hash_value_1, calc_hash_value_2: Calculate hash values for data points.
+        get_search_position: Determine the search positions for a given query in the hash tables.
+        find_radius: Find the search radius based on the query and the data distribution.
+        dynamic_separation_counting: Dynamically count and identify candidate data points close to the query.
+        fns: Find the nearest neighbors for a given query.
     """
     def __init__(self, n:int , dim: int, m: int, index: np.array, norm: np.array, data:List[List[IdxVal]], scan_size=1600, check_error=10e-6):
         self.n = n
@@ -82,6 +123,16 @@ class RQALSH:
         return val
 
     def get_search_position(self,sample_dim:int , query: List[IdxVal]) -> SearchPosition:
+        """
+        Determines the initial search positions for a given query in the hash tables.
+
+        Parameters:
+            sample_dim (int): The dimensionality of the sample data points.
+            query (List[IdxVal]): The query data points.
+
+        Returns:
+            SearchPosition: An object representing the positions within hash tables for the given query.
+        """
         query_val = np.zeros(self.m)
         left_pos = np.zeros(self.m, dtype=int)
         right_pos = np.zeros(self.m, dtype=int)
