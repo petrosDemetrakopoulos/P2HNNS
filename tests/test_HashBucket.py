@@ -1,7 +1,7 @@
 # pylint: disable=W0621, C0116, C0115, W0201
 import pytest
 import numpy as np
-from src.utils.HashBucket import HashBucket
+from P2HNNS.utils.HashBucket import HashBucket
 
 class TestHashBucket:
     def setup_method(self):

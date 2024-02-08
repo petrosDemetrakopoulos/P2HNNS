@@ -1,10 +1,10 @@
 # pylint: disable=W0621, C0116
 import numpy as np
 import pytest
-from src.methods.NHHash import NHHash, Signature
-from src.utils.RandomSampler import RandomSampler
-from src.utils.distance_functions import DistAbsDot
-from src.utils import Query,IdxVal
+from P2HNNS.methods.NHHash import NHHash, Signature
+from P2HNNS.utils.RandomSampler import RandomSampler
+from P2HNNS.utils.distance_functions import DistAbsDot
+from P2HNNS.utils import Query,IdxVal
 
 @pytest.fixture
 def nh_hash_setup():

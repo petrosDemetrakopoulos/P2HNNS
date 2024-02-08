@@ -1,8 +1,8 @@
 # pylint: disable=W0621, C0116, C0103
 import numpy as np
-from src.methods import FHHash, BHHash, MHHash, NHHash, EHHash
-from src.utils import FHQuery, Query
-from src.utils.distance_functions import DistDP2H, DistAbsDot
+from P2HNNS.methods import FHHash, BHHash, MHHash, NHHash, EHHash
+from P2HNNS.utils import FHQuery, Query
+from P2HNNS.utils.distance_functions import DistDP2H, DistAbsDot
 
 # initialize 20 points in the 2D space
 example_data = np.array([[1.5,0.5],[0.5,0.2],[2,2],[1,1.5],[0.8,0.5],[2,2.5],[3,2],[5,8],[4,6],[5,5],[10,10],[12,7],[8,6],[5,2],[16,32],[10,5],[50,45],[-13,15],[7,6],[9,8]])

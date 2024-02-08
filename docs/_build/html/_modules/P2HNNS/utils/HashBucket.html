@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>P2HNNS.utils.HashBucket &mdash; P2HNNS 1.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> P2HNNS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../P2HNNS.html">P2HNNS package</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">P2HNNS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">P2HNNS.utils.HashBucket</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for P2HNNS.utils.HashBucket</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<div class="viewcode-block" id="HashBucket"><a class="viewcode-back" href="../../../P2HNNS.utils.html#P2HNNS.utils.HashBucket.HashBucket">[docs]</a><span class="k">class</span> <span class="nc">HashBucket</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Implements a hash bucket system for efficiently managing and querying data using multiple hash tables. </span>
+<span class="sd">    The class supports inserting data items and searching for items based on a query code, utilizing bitwise </span>
+<span class="sd">    operations for hash code generation and management.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        l (int): The number of hash tables (buckets) to be used.</span>
+<span class="sd">        mask (int): A bitmask used to ensure hash codes fit within a certain range.</span>
+<span class="sd">        buckets (List[defaultdict[list]]): A list of hash tables for storing data items, where each hash table </span>
+<span class="sd">                                           is implemented as a defaultdict(list) for flexibility and efficiency.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        n (int): The expected size of the dataset, used to determine the range of hash codes.</span>
+<span class="sd">        l (int): The number of hash tables (buckets) to create for data storage.</span>
+
+<span class="sd">    Methods:</span>
+<span class="sd">        insert(self, key: int, dcode: np.array): Inserts a data item into the hash buckets.</span>
+<span class="sd">        search(self, qcode, limit, consumer): Searches for data items that match a query code.</span>
+<span class="sd">        get_or_empty(self, bucket, hashcode32): Retrieves items from a bucket based on a hash code, </span>
+<span class="sd">                                                 returning an empty list if no items are found.</span>
+<span class="sd">        swap(self, as_list, bs_list, aidx, bidx): Swaps items between two lists at specified indices.</span>
+<span class="sd">        get_or_insert(self, map_obj, idx): Retrieves or initializes a list in a map for a given index.</span>
+<span class="sd">        is_empty(self): Returns True if no data has been added to the HashBucket, otherwise False.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">l</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the HashBucket with the specified number of hash tables and configures the bitmask </span>
+<span class="sd">        based on the expected size of the dataset.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            n (int): The expected size of the dataset.</span>
+<span class="sd">            l (int): The number of hash tables to use.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">l</span> <span class="o">=</span> <span class="n">l</span>
+        <span class="n">max_val</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">max_val</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+            <span class="n">max_val</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span>
+        <span class="n">max_val</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="n">max_val</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buckets</span> <span class="o">=</span> <span class="p">[</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">)]</span>
+
+<div class="viewcode-block" id="HashBucket.insert"><a class="viewcode-back" href="../../../P2HNNS.utils.html#P2HNNS.utils.HashBucket.HashBucket.insert">[docs]</a>    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">dcode</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inserts a data item identified by a key into the hash buckets using the provided hash codes.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            key (int): The identifier for the data item to be inserted.</span>
+<span class="sd">            dcode (np.array): An array of hash codes for the data item, one for each hash table.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">):</span>
+            <span class="n">hashcode32</span> <span class="o">=</span> <span class="n">dcode</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&amp;</span> <span class="bp">self</span><span class="o">.</span><span class="n">mask</span>
+            <span class="n">found</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">buckets</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">hashcode32</span><span class="p">]</span>
+            <span class="n">found</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">found</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">found</span><span class="p">))</span>
+                <span class="n">found</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">found</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">found</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">found</span><span class="p">[</span><span class="n">n</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="HashBucket.search"><a class="viewcode-back" href="../../../P2HNNS.utils.html#P2HNNS.utils.HashBucket.HashBucket.search">[docs]</a>    <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qcode</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">consumer</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Searches for data items that match the query code, using a consumer function to process each found item.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            qcode: The query code used to search for matching data items.</span>
+<span class="sd">            limit (int): The maximum number of candidate items to find before stopping the search.</span>
+<span class="sd">            consumer (Callable): A function to be called for each data item found during the search.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            defaultdict[int, int]: A dictionary with keys as item identifiers and values as the count of matches.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">candidate</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-- Searching... --&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)):</span>
+            <span class="n">hashcode32</span> <span class="o">=</span> <span class="n">qcode</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&amp;</span> <span class="bp">self</span><span class="o">.</span><span class="n">mask</span>
+            <span class="n">bucket</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_or_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buckets</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">hashcode32</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">bucket</span><span class="p">:</span>
+                <span class="n">cnt</span> <span class="o">=</span> <span class="n">candidate</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">cnt</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">consumer</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+                <span class="n">candidate</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">cnt</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">limit</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">candidate</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="n">candidate</span>
+
+        <span class="k">return</span> <span class="n">candidate</span></div>
+
+<div class="viewcode-block" id="HashBucket.get_or_empty"><a class="viewcode-back" href="../../../P2HNNS.utils.html#P2HNNS.utils.HashBucket.HashBucket.get_or_empty">[docs]</a>    <span class="k">def</span> <span class="nf">get_or_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bucket</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">hashcode32</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieves the list of items associated with a hash code from a bucket, or an empty list if no items are found.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            bucket (defaultdict[list]): The bucket from which to retrieve items.</span>
+<span class="sd">            hashcode32 (int): The hash code used to look up items in the bucket.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list: The list of items associated with the hash code, or an empty list if none are found.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">bucket</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">hashcode32</span><span class="p">,</span> <span class="p">[])</span></div>
+
+<div class="viewcode-block" id="HashBucket.swap"><a class="viewcode-back" href="../../../P2HNNS.utils.html#P2HNNS.utils.HashBucket.HashBucket.swap">[docs]</a>    <span class="k">def</span> <span class="nf">swap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">as_list</span><span class="p">:</span> <span class="n">List</span><span class="p">,</span> <span class="n">bs_list</span><span class="p">:</span> <span class="n">List</span><span class="p">,</span> <span class="n">aidx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">bidx</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Swaps items between two lists at specified indices.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            as_list (list): The first list from which an item will be swapped.</span>
+<span class="sd">            bs_list (list): The second list with which an item from the first list will be swapped.</span>
+<span class="sd">            aidx (int): The index in the first list of the item to swap.</span>
+<span class="sd">            bidx (int): The index in the second list of the item to swap.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">aidx</span> <span class="o">!=</span> <span class="n">bidx</span><span class="p">:</span>
+            <span class="n">as_list</span><span class="p">[</span><span class="n">aidx</span><span class="p">],</span> <span class="n">bs_list</span><span class="p">[</span><span class="n">bidx</span><span class="p">]</span> <span class="o">=</span> <span class="n">bs_list</span><span class="p">[</span><span class="n">bidx</span><span class="p">],</span> <span class="n">as_list</span><span class="p">[</span><span class="n">aidx</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="HashBucket.get_or_insert"><a class="viewcode-back" href="../../../P2HNNS.utils.html#P2HNNS.utils.HashBucket.HashBucket.get_or_insert">[docs]</a>    <span class="k">def</span> <span class="nf">get_or_insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">map_obj</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieves a list from a map object for a given index. If the index does not exist, a new list is initialized.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            map_obj (defaultdict[list]): The map from which to retrieve or initialize the list.</span>
+<span class="sd">            idx (int): The index for which to retrieve or initialize the list.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list: The list associated with the given index in the map object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">idx</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">map_obj</span><span class="p">:</span>
+            <span class="n">map_obj</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">return</span> <span class="n">map_obj</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="HashBucket.is_empty"><a class="viewcode-back" href="../../../P2HNNS.utils.html#P2HNNS.utils.HashBucket.HashBucket.is_empty">[docs]</a>    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Checks if the HashBucket is empty.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if no data has been added to any of the hash tables, otherwise False.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bucket</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">bucket</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">buckets</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Petros Demetrakopoulos.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

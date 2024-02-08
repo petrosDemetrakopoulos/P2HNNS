@@ -2,9 +2,9 @@
 from unittest.mock import MagicMock
 import numpy as np
 import pytest
-from src.methods import EHHash
-from src.utils import Query, IdxVal
-from src.utils.distance_functions import DistAbsDot
+from P2HNNS.methods import EHHash
+from P2HNNS.utils import Query, IdxVal
+from P2HNNS.utils.distance_functions import DistAbsDot
 
 
 @pytest.fixture

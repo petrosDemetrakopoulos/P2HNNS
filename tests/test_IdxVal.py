@@ -1,4 +1,4 @@
-from src.utils.IdxVal import IdxVal
+from P2HNNS.utils.IdxVal import IdxVal
 
 def test_initialization():
     """Test initialization of IdxVal objects."""
