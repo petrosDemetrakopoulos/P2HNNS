@@ -1,4 +1,4 @@
-## Point-to-hyperplane nearest neighbours search (P2HNNS)
+# Point-to-hyperplane nearest neighbours search (P2HNNS)
 A Python library for efficient Point-to-hyperplane nearest neighbours search (P2HNNS) using locality sensitive hashing (LSH) approaches.
 The library implements the 5 different methods described below.
 
@@ -12,16 +12,16 @@ The implementation is based on the original code of [HuangQiang](https://github.
 
 The original papers proposing each method will be explicitly provided in section [Resource](#resouces).
 
-### Installation
+## Installation
 The library can be installed via the pip package manager using the following command
 ```
 pip install P2HNNS
 ```
 
-### Tests
+## Tests
 Unit tests are written using the pytest framework for all functionalities of the library. Tests are located in the [/tests](/tests/) directory.
 
-### Resources
+## Resources
 - [Point-to-Hyperplane Nearest Neighbor Search Beyond the Unit Hypersphere, SIGMOD 2021](https://dl.acm.org/doi/abs/10.1145/3448016.3457240) (Original FH and NH paper)
 - [Compact Hyperplane Hashing with Bilinear Functions, ICML 2012](https://arxiv.org/abs/1206.4618) (Original BH paper)
 - [Hashing Hyperplane Queries to Near Points with Applications to Large-Scale Active Learning, NeurIPS 2010](https://proceedings.neurips.cc/paper/2010/hash/470e7a4f017a5476afb7eeb3f8b96f9b-Abstract.html) (Original EH paper)
@@ -29,5 +29,5 @@ Unit tests are written using the pytest framework for all functionalities of the
 - [Original C++ implementation by Huang Qiang](https://github.com/HuangQiang/P2HNNS)
 - [Java implementation](https://github.com/stepping1st/hyperplane-hash)
 
-### License
+## License
 The library is licensed under the MIT Software license. You can see more details in the [LICENSE file](./LICENSE).
