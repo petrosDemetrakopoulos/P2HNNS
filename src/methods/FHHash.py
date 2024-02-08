@@ -39,6 +39,9 @@ class FHHash(Hash):
         m (int): The number of hash functions to be used in RQALSH.
         max_blocks (int): Maximum number of blocks into which the dataset is divided.
 
+    Methods:
+        
+
     Parameters for initalization:
         d (int): Original dimensionality of the data.
         s (int): Number of samples to be taken from each data point.
