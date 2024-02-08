@@ -18,7 +18,7 @@ The library can be installed via the pip package manager using the following com
 pip install P2HNNS
 ```
 
-## Documentations
+## Documentation
 Extensive documentation for using the library is available via [Read the Docs](https://p2hnns.readthedocs.io/en/latest/index.html)
 
 ## Tests
