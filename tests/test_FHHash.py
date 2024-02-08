@@ -4,8 +4,8 @@ import numpy as np
 import pytest
 from src.methods import FHHash
 from src.methods.FHHash import Transform
-from src import IdxVal, FHQuery
-from src.distance_functions import DistDP2H
+from src.utils import IdxVal, FHQuery
+from src.utils.distance_functions import DistDP2H
 
 @pytest.fixture
 def sample_data():
@@ -31,7 +31,7 @@ def test_transform_initialization(transform_instance):
     assert transform_instance.M == 3.0
     assert transform_instance.dist is not None
 
-@patch('src.RandomSampler')
+@patch('src.utils.RandomSampler')
 def test_fhhash_initialization(MockRandomSampler, fhhash_instance):
     assert fhhash_instance.hashs == []
     assert fhhash_instance.fhdim == 16  # For d=5, calculated as 5*(5+1)/2 + 1

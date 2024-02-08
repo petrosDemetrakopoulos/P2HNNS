@@ -1,9 +1,9 @@
 # pylint: disable=W0621, C0116
 import numpy as np
 import pytest
-from src import Query
+from src.utils import Query
 from src.methods import BHHash
-from src.distance_functions import DistDP2H
+from src.utils.distance_functions import DistDP2H
 
 @pytest.fixture
 def bhhash_setup():

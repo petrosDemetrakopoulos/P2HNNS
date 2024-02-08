@@ -1,7 +1,7 @@
 # pylint: disable=W0621, C0116, C0115, W0201, E0110
 import numpy as np
 import pytest
-from src.distance_functions import Dist, DistAbsDot, DistCos, DistDP2H
+from src.utils.distance_functions import Dist, DistAbsDot, DistCos, DistDP2H
 
 def test_abs_dot_distance():
     query = np.array([1, 2, 3])

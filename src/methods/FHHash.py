@@ -2,11 +2,11 @@ from typing import List
 import heapq
 import numpy as np
 from tqdm import tqdm
-from ..RandomSampler import RandomSampler
-from ..IdxVal import IdxVal
-from ..FHQuery import FHQuery
+from ..utils.RandomSampler import RandomSampler
+from ..utils.IdxVal import IdxVal
+from ..utils.FHQuery import FHQuery
 from .Hash import Hash
-from ..RQALSH import RQALSH
+from ..utils.RQALSH import RQALSH
 
 class Transform:
     """

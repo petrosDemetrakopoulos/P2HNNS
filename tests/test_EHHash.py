@@ -3,8 +3,8 @@ from unittest.mock import MagicMock
 import numpy as np
 import pytest
 from src.methods import EHHash
-from src import Query, IdxVal
-from src.distance_functions import DistAbsDot
+from src.utils import Query, IdxVal
+from src.utils.distance_functions import DistAbsDot
 
 
 @pytest.fixture

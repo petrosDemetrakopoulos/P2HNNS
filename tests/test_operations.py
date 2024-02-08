@@ -1,6 +1,6 @@
 # pylint: disable=W0621, C0116, C0115, W0201, W0401
 import numpy as np
-from src.operations import *
+from src.utils.operations import *
 
 def test_dot():
     a = np.array([1, 2, 3])

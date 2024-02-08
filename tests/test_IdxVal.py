@@ -1,4 +1,4 @@
-from src.IdxVal import IdxVal
+from src.utils.IdxVal import IdxVal
 
 def test_initialization():
     """Test initialization of IdxVal objects."""

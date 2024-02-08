@@ -1,7 +1,7 @@
 # pylint: disable=W0621, C0116, C0115, W0201, W0401, C0301
 import numpy as np
 import pytest
-from src.SortedLCCS import SortedLCCS, Loc
+from src.utils.SortedLCCS import SortedLCCS, Loc
 
 @pytest.fixture
 def sample_data():

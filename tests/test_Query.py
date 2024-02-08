@@ -1,8 +1,8 @@
 # pylint: disable=W0621, C0116
 import numpy as np
 import pytest
-from src.distance_functions import Dist
-from src import Query  # Adjust the import according to your project structure
+from src.utils.distance_functions import Dist
+from src.utils import Query
 
 class MockDist(Dist):
     """A mock distance function for testing purposes."""

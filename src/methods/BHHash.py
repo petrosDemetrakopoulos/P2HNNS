@@ -3,9 +3,9 @@ from heapq import heappush, heappop
 from tqdm import tqdm
 import numpy as np
 from .Hash import Hash
-from ..Query import Query
-from ..IdxVal import IdxVal
-from ..HashBucket import HashBucket
+from ..utils.Query import Query
+from ..utils.IdxVal import IdxVal
+from ..utils.HashBucket import HashBucket
 
 class BHHash(Hash):
     """

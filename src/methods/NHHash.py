@@ -2,12 +2,12 @@ from queue import PriorityQueue
 from typing import List
 import numpy as np
 from tqdm import tqdm
-from ..RandomSampler import RandomSampler
-from ..Query import Query
-from ..IdxVal import IdxVal
+from ..utils.RandomSampler import RandomSampler
+from ..utils.Query import Query
+from ..utils.IdxVal import IdxVal
 from .Hash import Hash
-from ..distance_functions import Dist
-from ..SortedLCCS import SortedLCCS
+from ..utils.distance_functions import Dist
+from ..utils.SortedLCCS import SortedLCCS
 
 class Signature:
     """

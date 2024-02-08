@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
-from src.RandomSampler import RandomSampler
-from src.IdxVal import IdxVal
+from src.utils.RandomSampler import RandomSampler
+from src.utils.IdxVal import IdxVal
 
 class TestRandomSampler:
     @pytest.fixture

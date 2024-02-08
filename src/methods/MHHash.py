@@ -2,11 +2,11 @@ from typing import List
 from heapq import heappush, heappop
 import numpy as np
 from tqdm import tqdm
-from ..operations import dot_with_start
+from ..utils.operations import dot_with_start
 from .Hash import Hash
-from ..Query import Query
-from ..IdxVal import IdxVal
-from ..HashBucket import HashBucket
+from ..utils.Query import Query
+from ..utils.IdxVal import IdxVal
+from ..utils.HashBucket import HashBucket
 
 class MHHash(Hash):
     """

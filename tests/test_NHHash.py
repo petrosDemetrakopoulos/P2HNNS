@@ -2,10 +2,9 @@
 import numpy as np
 import pytest
 from src.methods.NHHash import NHHash, Signature
-from src.RandomSampler import RandomSampler
-from src.distance_functions import DistAbsDot
-from src import Query
-from src import IdxVal
+from src.utils.RandomSampler import RandomSampler
+from src.utils.distance_functions import DistAbsDot
+from src.utils import Query,IdxVal
 
 @pytest.fixture
 def nh_hash_setup():

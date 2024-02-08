@@ -1,8 +1,8 @@
 from abc import abstractmethod
 from typing import TypeVar, List
 import numpy as np
-from ..IdxVal import IdxVal
-from ..Query import Query
+from ..utils.IdxVal import IdxVal
+from ..utils.Query import Query
 
 T = TypeVar('T', bound=Query)
 

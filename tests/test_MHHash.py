@@ -3,9 +3,9 @@ from unittest.mock import patch
 import pytest
 import numpy as np
 from src.methods import MHHash
-from src.HashBucket import HashBucket
-from src.distance_functions import DistCos
-from src import Query
+from src.utils.HashBucket import HashBucket
+from src.utils.distance_functions import DistCos
+from src.utils import Query
 
 @pytest.fixture
 def setup_mhhash():

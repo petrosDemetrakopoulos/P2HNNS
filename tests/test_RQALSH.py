@@ -1,8 +1,8 @@
 # pylint: disable=W0621, C0116, C0115, W0201, W0401
 import numpy as np
 import pytest
-from src.RQALSH import RQALSH, SearchPosition
-from src.IdxVal import IdxVal
+from src.utils.RQALSH import RQALSH, SearchPosition
+from src.utils.IdxVal import IdxVal
 
 @pytest.fixture
 def setup_rqalsh():
