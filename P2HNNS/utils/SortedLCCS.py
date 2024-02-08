@@ -57,6 +57,42 @@ class SortedLCCS:
         data (np.ndarray): The dataset.
         sortedidx (List[List[int]]): Indices of elements sorted per dimension.
         nextidx (List[List[int]]): Links to next elements for dimensionality-reduced search.
+
+    Parameters for initialization:
+        step (int): The step size for dimensionality reduction in search.
+        data (np.ndarray): The dataset.
+        scan_size (int): The size of the range to perform linear scans in binary search fallback.
+
+    Methods:
+        compare_dim_vectors(xs:np.array, ys: np.array, start: int, walked: int) -> CmpLoc: 
+            Compares two arrays element-wise in a circular manner.
+
+        compare_dim_indices(idx1: int, idx2: int, start: int, walked: int) -> CmpLoc: 
+            Compares elements at given indices of the dataset in a circular manner.
+
+        get_sort_idx(dim: int, n: int) -> List[List[int]]: Sorts indices of the dataset for each dimension.
+
+        get_next_link(step: int) -> np.ndarray: 
+            Creates links for each element to its successor in a dimensionally reduced search space.
+
+        get_data(query_dim: int, idx: int) -> np.array: 
+            Retrieves data from the dataset at a given index sorted by a specific dimension.
+
+        scan_loc(query: np.array, query_dim: int, low: int, low_len: int, high: int, high_len: int) -> Loc: 
+            Performs a linear scan to refine the location of a query.
+
+        binary_search_loc(query: np.array, query_dim: int, low: int, low_len: int, high: int, high_len: int) -> Loc: 
+            Uses binary search to find the location of a query.
+
+        get_loc(query: np.array, query_dim: int) -> Loc: Finds the location of a query within the dataset.
+
+        find_matched_locs(query: np.array) -> Locs: Finds locations in the dataset that match the query across various dimensions.
+
+        search(scan_step: int, query: np.array, f: Callable) -> Dict: 
+            Searches for matches to the query and applies a function to each match.
+
+        candidates_by_scan(scan_step: int, query: np.array, f: Callable) -> Dict: 
+            Identifies candidate matches for the query by scanning.
     """
     def __init__(self, step: int, data: np.ndarray, scan_size:int=4):
         self.scan_size = scan_size
@@ -91,7 +127,7 @@ class SortedLCCS:
                 return CmpLoc(i + walked, np.sign(x-y))
         return CmpLoc(self.dim, 0)
 
-    def compare_dim_lambda(self, idx1, start=0):
+    def _compare_dim_lambda(self, idx1, start=0):
         def cmp(idx2):
             matched = self.compare_dim_indices(idx1,idx2,start,0)
             return matched.cmp
@@ -127,7 +163,7 @@ class SortedLCCS:
         """
         sorted_idx = [[i for i in range(n)] for _ in range(dim)]
         for d in range(dim):
-            sorted_idx[d] = sorted(sorted_idx[d], key=lambda i, d=d: self.compare_dim_lambda(i, start=d)(i))
+            sorted_idx[d] = sorted(sorted_idx[d], key=lambda i, d=d: self._compare_dim_lambda(i, start=d)(i))
         return sorted_idx
 
     def get_next_link(self,step: int) -> np.ndarray:
@@ -197,8 +233,7 @@ class SortedLCCS:
         # Reach the end
         return Loc(high - 1, last_dim, high_len)
 
-    # Define the equivalent of BiIntFunction
-    def cmp_function(self,i, prev, query_dim, query):
+    def _cmp_function(self,i, prev, query_dim, query) -> CmpLoc:
         """
         Compares data at a given index with the query, used as a callback for binary search.
 
@@ -239,7 +274,7 @@ class SortedLCCS:
 
             # Binary search
             mid = (next_low + next_high) // 2
-            loc = self.cmp_function(mid, cur_dim, query_dim, query)
+            loc = self._cmp_function(mid, cur_dim, query_dim, query)
 
             # If query < mid
             if loc.cmp == -1:
@@ -321,7 +356,7 @@ class SortedLCCS:
 
         return Locs(idxes, lowlens, highlens)
 
-    def search(self,scan_step:int, query: np.array, f: Callable) -> Dict:
+    def search(self,scan_step: int, query: np.array, f: Callable) -> Dict:
         """
         Searches for matches to the query in the dataset and applies a callable to each match.
 

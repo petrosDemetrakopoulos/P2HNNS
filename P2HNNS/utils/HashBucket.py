@@ -21,11 +21,16 @@ class HashBucket:
 
     Methods:
         insert(key: int, dcode: np.array): Inserts a data item into the hash buckets.
-        search(qcode, limit: int, consumer: Callable): Searches for data items that match a query code.
-        get_or_empty(bucket, hashcode32): Retrieves items from a bucket based on a hash code, 
-                                                 returning an empty list if no items are found.
-        swap(as_list, bs_list, aidx, bidx): Swaps items between two lists at specified indices.
-        get_or_insert(map_obj, idx): Retrieves or initializes a list in a map for a given index.
+
+        search(qcode, limit: int, consumer: Callable) -> Dict: Searches for data items that match a query code.
+
+        get_or_empty(bucket: Dict, hashcode32: int) -> List: Retrieves items from a bucket based on a hash code, 
+                                                             returning an empty list if no items are found.
+
+        swap(as_list: List, bs_list: List, aidx: int, bidx: int): Swaps items between two lists at specified indices.
+
+        get_or_insert(map_obj: Dict, idx: int) -> List: Retrieves or initializes a list in a map for a given index.
+
         is_empty() -> bool: Returns True if no data has been added to the HashBucket, otherwise False.
     """
     def __init__(self, n: int, l: int):
