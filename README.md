@@ -1,5 +1,5 @@
 ## Point-to-hyperplane nearest neighbours search (P2HNNS)
-A Python library efficient Point-to-hyperplane nearest neighbours search (P2HNNS) using locality sensitive hashing (LSH) approaches.
+A Python library for efficient Point-to-hyperplane nearest neighbours search (P2HNNS) using locality sensitive hashing (LSH) approaches.
 The library implements the 5 different methods described below.
 
 - Bilinear Hyperplane (BH) hashing 
