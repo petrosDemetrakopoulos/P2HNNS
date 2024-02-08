@@ -1,5 +1,5 @@
 P2HNNS package
-===========
+=============
 
 Subpackages
 -----------

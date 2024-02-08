@@ -1,11 +1,11 @@
 P2HNNS.utils package
-=================
+====================
 
 Submodules
 ----------
 
 P2HNNS.utils.FHQuery module
-------------------------
+---------------------------
 
 .. automodule:: P2HNNS.utils.FHQuery
    :members:
@@ -13,7 +13,7 @@ P2HNNS.utils.FHQuery module
    :show-inheritance:
 
 P2HNNS.utils.HashBucket module
----------------------------
+------------------------------
 
 .. automodule:: P2HNNS.utils.HashBucket
    :members:
@@ -21,7 +21,7 @@ P2HNNS.utils.HashBucket module
    :show-inheritance:
 
 P2HNNS.utils.IdxVal module
------------------------
+--------------------------
 
 .. automodule:: P2HNNS.utils.IdxVal
    :members:
@@ -29,7 +29,7 @@ P2HNNS.utils.IdxVal module
    :show-inheritance:
 
 P2HNNS.utils.Query module
-----------------------
+-------------------------
 
 .. automodule:: P2HNNS.utils.Query
    :members:
@@ -37,7 +37,7 @@ P2HNNS.utils.Query module
    :show-inheritance:
 
 P2HNNS.utils.RQALSH module
------------------------
+--------------------------
 
 .. automodule:: P2HNNS.utils.RQALSH
    :members:
@@ -45,7 +45,7 @@ P2HNNS.utils.RQALSH module
    :show-inheritance:
 
 P2HNNS.utils.RandomSampler module
-------------------------------
+---------------------------------
 
 .. automodule:: P2HNNS.utils.RandomSampler
    :members:
@@ -53,7 +53,7 @@ P2HNNS.utils.RandomSampler module
    :show-inheritance:
 
 P2HNNS.utils.SortedLCCS module
----------------------------
+------------------------------
 
 .. automodule:: P2HNNS.utils.SortedLCCS
    :members:
@@ -61,7 +61,7 @@ P2HNNS.utils.SortedLCCS module
    :show-inheritance:
 
 P2HNNS.utils.distance\_functions module
-------------------------------------
+---------------------------------------
 
 .. automodule:: P2HNNS.utils.distance_functions
    :members:
@@ -69,7 +69,7 @@ P2HNNS.utils.distance\_functions module
    :show-inheritance:
 
 P2HNNS.utils.operations module
----------------------------
+------------------------------
 
 .. automodule:: P2HNNS.utils.operations
    :members:
