@@ -8,19 +8,12 @@ class Query:
     of the query hyperplane, the dataset against which the query is executed, and parameters such as the number
     of top results to return and a limit for search optimization.
 
-    Attributes:
+    Attributes / Parameters for initialization:
         query (np.array): The hyperplane coefficients representing the query.
         data (np.ndarray): The dataset array against which the query will be executed.
         top (int): The number of top nearest neighbors to return.
         limit (int): A limit for search optimization, possibly affecting the search algorithm's performance or accuracy.
         dist (Dist): The distance function used to calculate distances between points and the hyperplane.
-
-    Parameters:
-        query (np.array): An array representing the query hyperplane.
-        data (np.ndarray): The dataset to search against.
-        top (int): The number of nearest neighbors to find.
-        limit (int): A search optimization parameter.
-        dist (Dist): An instance of a distance function class used for calculating distances.
 
     Methods:
         copy(self, dist: Dist) -> 'Query':
@@ -28,17 +21,6 @@ class Query:
     """
 
     def __init__(self, query: np.array, data: np.ndarray, top: int, limit: int, dist: Dist):
-        """
-        Initializes a new Query instance with the specified query hyperplane, dataset, top results limit,
-        search limit, and distance function.
-
-        Parameters:
-            query (np.array): Coefficients defining the query hyperplane.
-            data (np.ndarray): The dataset in which to perform the search.
-            top (int): The number of nearest neighbors to retrieve.
-            limit (int): A limit for optimizing the search process.
-            dist (Dist): The distance function to use for calculating point-to-hyperplane distances.
-        """
         self.query = query
         self.data = data
         self.top = top

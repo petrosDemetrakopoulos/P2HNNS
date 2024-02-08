@@ -64,17 +64,33 @@ class RQALSH:
         dim (int): The dimensionality of the data points.
         m (int): The number of hash tables.
         index (np.array): The indices of the data points.
-        scan_size (int): The number of points to scan in each hash table.
+        scan_size (int): The maximum number of points to scan in each hash table.
         check_error (float): The error tolerance for checking candidates.
         a (np.array): The generated hash functions.
         tables (List): The hash tables storing data points and their hash values.
 
+    Parameters for initialiaztion:
+        n (int): The number of data points.
+        dim (int): The dimensionality of the data points.
+        m (int): The number of hash tables.
+        index (np.array): The indices of the data points.
+        norm (np.array): The norm used to calculate the hash values.
+        data (List[List[IdxVal]]): The data points to index.
+        scan_size (int): The maximum number of points to scan in each hash table.
+        check_error (float): The error tolerance for checking candidates.
+
     Methods:
-        calc_hash_value, calc_hash_value_1, calc_hash_value_2: Calculate hash values for data points.
-        get_search_position: Determine the search positions for a given query in the hash tables.
-        find_radius: Find the search radius based on the query and the data distribution.
-        dynamic_separation_counting: Dynamically count and identify candidate data points close to the query.
-        fns: Find the nearest neighbors for a given query.
+        get_search_position(sample_dim: int, query: List[IdxVal]) -> SearchPosition: 
+            Determine the search positions for a given query in the hash tables.
+
+        find_radius(w: float, position: SearchPosition) -> float: 
+            Find the search radius based on the query and the data distribution.
+
+        dynamic_separation_counting(l: int, limit: int, R: float, position: SearchPosition) -> List: 
+            Dynamically count and identify candidate data points close to the query.
+
+         fns(l: int, limit: int, R: float, sampledim: int, query: List[IdxVal]) -> List: 
+            Find the nearest neighbors for a given query.
     """
     def __init__(self, n:int , dim: int, m: int, index: np.array, norm: np.array,
                  data:List[List[IdxVal]], scan_size=1600, check_error=10e-6):
@@ -95,7 +111,7 @@ class RQALSH:
             idx = index[i]
             for j in range(m):
                 w = data[idx]
-                val = self.calc_hash_value_1(len(w),j, norm[idx], w)
+                val = self._calc_hash_value_1(len(w),j, norm[idx], w)
                 self.tables[j * n + i] = IdxVal(i, val)
 
         # sort hash tables in ascending order of hash values
@@ -104,7 +120,7 @@ class RQALSH:
             end = start + n
             self.tables[start:end] = sorted(self.tables[start:end], key=lambda x: x.value)
 
-    def calc_hash_value(self, tid: int, data: np.array) -> float:
+    def _calc_hash_value(self, tid: int, data: np.array) -> float:
         """
         Calculates the hash value of a given data point using a specified hash function.
 
@@ -117,7 +133,7 @@ class RQALSH:
         """
         return dot(data,self.a, tid * self.dim)
 
-    def calc_hash_value_1(self, d: int, tid: int, last: float, data: List[IdxVal]) -> float:
+    def _calc_hash_value_1(self, d: int, tid: int, last: float, data: List[IdxVal]) -> float:
         """
         Calculates the hash value for a given data point, incorporating a last value for adjustment.
 
@@ -137,7 +153,7 @@ class RQALSH:
             val += self.a[start + idx] * data[i].value
         return val + self.a[start + self.dim - 1] * last
 
-    def calc_hash_value_2(self, d: int, tid: int, data: List[IdxVal]) -> float:
+    def _calc_hash_value_2(self, d: int, tid: int, data: List[IdxVal]) -> float:
         """
         Calculates the hash value for a given data point without incorporating an adjustment value.
 
@@ -156,7 +172,7 @@ class RQALSH:
             val += self.a[start + idx] * data[i].value
         return val
 
-    def get_search_position(self,sample_dim:int , query: List[IdxVal]) -> SearchPosition:
+    def get_search_position(self, sample_dim:int, query: List[IdxVal]) -> SearchPosition:
         """
         Determines the initial search positions for a given query in the hash tables.
 
@@ -171,7 +187,7 @@ class RQALSH:
         left_pos = np.zeros(self.m, dtype=int)
         right_pos = np.zeros(self.m, dtype=int)
         for i in range(self.m):
-            query_val[i] = self.calc_hash_value_1(sample_dim, i, 0.0, query)
+            query_val[i] = self._calc_hash_value_1(sample_dim, i, 0.0, query)
             left_pos[i] = 0
             right_pos[i] = self.n - 1
 
@@ -212,7 +228,7 @@ class RQALSH:
 
         return 2.0 ** kappa
 
-    def dynamic_separation_counting(self,l: int, limit: int, R: float, position: SearchPosition):
+    def dynamic_separation_counting(self,l: int, limit: int, R: float, position: SearchPosition) -> List:
         """
         Dynamically counts and identifies candidate data points that are close to the query point using separation counting.
 
@@ -328,7 +344,7 @@ class RQALSH:
         return param.cands
 
 
-    def fns(self, l: int, limit: int, R: float, sampledim: int, query: List[IdxVal]):
+    def fns(self, l: int, limit: int, R: float, sampledim: int, query: List[IdxVal]) -> List:
         """
         Finds the nearest neighbors to a given query within a specified radius.
 

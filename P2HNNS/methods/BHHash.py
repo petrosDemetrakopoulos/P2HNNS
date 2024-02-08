@@ -20,19 +20,22 @@ class BHHash(Hash):
         randu (np.array): A numpy array of random vectors from a Gaussian distribution, first part of bilinear projection.
         randv (np.array): A numpy array of random vectors from a Gaussian distribution, second part of bilinear projection.
 
-    Methods:
-        hash_data(data: np.array) -> np.array: Hashes the input data array into binary hash codes 
-                                               using the Bilinear hperplane method.
-        hash_query(query: np.array) -> np.array: Hashes a query into binary hash codes, 
-                                                 analogous to `hash_data` but tailored for query handling.
-        build_index(data: np.ndarray): Constructs the hash index for a dataset,
-                                       enabling efficient nearest neighbour searches.
-        nns(param: Query) -> List[IdxVal]: Performs a nearest neighbour search for a given query using the pre-built index.
-
     Parameters for initialization:
         d (int): The dimensionality of the input data vectors.
         m (int): The number of hyperplanes for each hash function.
         l (int): The number of hash functions to generate.
+
+    Methods:
+        hash_data(data: np.array) -> np.array: Hashes the input data array into binary hash codes 
+                                               using the Bilinear hperplane method.
+
+        hash_query(query: np.array) -> np.array: Hashes a query into binary hash codes, 
+                                                 analogous to `hash_data` but tailored for query handling.
+
+        build_index(data: np.ndarray): Constructs the hash index for a dataset,
+                                       enabling efficient nearest neighbour searches.
+
+        nns(param: Query) -> List[IdxVal]: Performs a nearest neighbour search for a given query using the pre-built index.
     """
     def __init__(self, d: int, m: int, l: int):
         """

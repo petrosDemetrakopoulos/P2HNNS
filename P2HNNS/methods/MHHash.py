@@ -21,22 +21,24 @@ class MHHash(Hash):
         randv (np.array): A randomly generated array of vectors used in hashing.
         buckets (HashBucket): A collection of hash buckets for storing indexed data points.
 
-    Methods:
-        __init__(self, dimension, m, l, M): Initializes the MHHash object with the specified dimensions, 
-            hash functions, and tables.
-        hash_data(self, data): Hashes the input data into `l` hash signatures, one for each hash table.
-        hash_query(self, query): Similar to `hash_data`, but hashes a query for searching the index.
-        _hash(self, query, pos): A helper method to compute the hash value of a query/data point
-            using the generated random vectors.
-        build_index(self, data): Indexes the provided dataset by hashing and storing the data points in the hash buckets.
-        nns(self, param): Performs a nearest neighbor search for the given query,
-            returning the closest points based on the query parameters.
-
     Parameters for initialization:
         dimension (int): The dimensionality of the input data points.
         m (int): The number of hash functions per hash table.
         l (int): The number of hash tables.
         M (int): The projection dimension for each hash function.
+
+    Methods:
+        hash_data(data: np.array) -> np.array: Hashes the input data into `l` hash signatures, one for each hash table.
+
+        hash_query(query: np.array) -> np.array: Similar to `hash_data`, but hashes a query for searching the index.
+
+        _hash(query, pos) -> float: A helper method to compute the hash value of a query/data point
+                           using the generated random vectors.
+    
+        build_index(data): Indexes the provided dataset by hashing and storing the data points in the hash buckets.
+
+        nns(param: Query) -> List[IdxVal]: Performs a nearest neighbor search for the given query,
+                                           returning the closest points based on the query parameters.
     """
     def __init__(self, dimension: int, m: int, l: int, M: int):
         self.m = m

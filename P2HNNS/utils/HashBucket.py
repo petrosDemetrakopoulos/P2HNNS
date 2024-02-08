@@ -15,28 +15,20 @@ class HashBucket:
         buckets (List[defaultdict[list]]): A list of hash tables for storing data items, where each hash table 
                                            is implemented as a defaultdict(list) for flexibility and efficiency.
 
-    Parameters:
+    Parameters for intialization:
         n (int): The expected size of the dataset, used to determine the range of hash codes.
         l (int): The number of hash tables (buckets) to create for data storage.
 
     Methods:
-        insert(self, key: int, dcode: np.array): Inserts a data item into the hash buckets.
-        search(self, qcode, limit, consumer): Searches for data items that match a query code.
-        get_or_empty(self, bucket, hashcode32): Retrieves items from a bucket based on a hash code, 
+        insert(key: int, dcode: np.array): Inserts a data item into the hash buckets.
+        search(qcode, limit: int, consumer: Callable): Searches for data items that match a query code.
+        get_or_empty(bucket, hashcode32): Retrieves items from a bucket based on a hash code, 
                                                  returning an empty list if no items are found.
-        swap(self, as_list, bs_list, aidx, bidx): Swaps items between two lists at specified indices.
-        get_or_insert(self, map_obj, idx): Retrieves or initializes a list in a map for a given index.
-        is_empty(self): Returns True if no data has been added to the HashBucket, otherwise False.
+        swap(as_list, bs_list, aidx, bidx): Swaps items between two lists at specified indices.
+        get_or_insert(map_obj, idx): Retrieves or initializes a list in a map for a given index.
+        is_empty() -> bool: Returns True if no data has been added to the HashBucket, otherwise False.
     """
     def __init__(self, n: int, l: int):
-        """
-        Initializes the HashBucket with the specified number of hash tables and configures the bitmask 
-        based on the expected size of the dataset.
-
-        Parameters:
-            n (int): The expected size of the dataset.
-            l (int): The number of hash tables to use.
-        """
         self.l = l
         max_val = 1
         while max_val < n:

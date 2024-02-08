@@ -9,8 +9,9 @@ T = TypeVar('T', bound=Query)
 class Hash():
     """
     Abstract base class for implementing hash-based nearest neighbors search algorithms. This class defines
-    the interface for hashing data points and queries, building the index for fast nearest neighbor searches,
-    and performing the actual search. Concrete implementations must provide functionality for these operations,
+    the interface for hashing data points and hyperplane queries, building the index for fast point-to-hyperplane 
+    nearest neighbor searches, and performing the actual search. 
+    Concrete implementations (BHHash, EHHash, MHHash, NHHash and FHHash) provide functionality for these operations,
     tailored to specific hashing techniques.
 
     Methods:

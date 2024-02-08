@@ -7,24 +7,16 @@ class IdxVal:
     and secondarily (in case of equal values) on the index. This class supports comparison operations allowing 
     objects of this class to be sorted or compared directly.
 
-    Attributes:
+    Attributes / Parameters for initialization:
         idx (int): The index part of the ordered pair.
         value (Any): The value part of the ordered pair, can be of any type that supports comparison operations.
 
     Methods:
-        __init__(self, idx, value): Initializes a new instance of IdxVal.
         __eq__(self, other): Checks equality between this object and another based on their values and indices.
         __lt__(self, other): Defines the less-than ordering between this object and another.
         __repr__(self): Returns an unambiguous string representation of this object.
     """
     def __init__(self, idx, value):
-        """
-        Initializes a new instance of the IdxVal class with the specified index and value.
-
-        Parameters:
-            idx (int): The index associated with the value.
-            value (Any): The value to be associated with the index. Can be of any type that supports comparison.
-        """
         self.idx = idx
         self.value = value
 

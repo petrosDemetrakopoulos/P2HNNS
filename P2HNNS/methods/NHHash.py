@@ -37,32 +37,27 @@ class NHHash(Hash):
         projb (np.array): Bias terms for linear projection in NH space.
         bucketerp (SortedLCCS): Data structure for storing and searching hashed data.
 
-    Methods:
-        sampling_signature (np.array) -> Signature: Projects a data point into the NH space and returns its signature.
-        hash_data (np.array) -> np.array: Hashes a given data point into a series of binary signatures
-                                          based on the nearest hyperplane hashing method.
-        hash_query(query: np.array) -> np.array: Hashes a query into binary signatures,
-                                                 analogous to `hash_data` but tailored for query handling.
-        build_index(data: np.ndarray): Constructs the hash index for a dataset,
-                                       enabling efficient nearest neighbour searches.
-        nns(param: Query) -> List[IdxVal]: Performs a nearest neighbour search for a given query using the pre-built index.
-
     Parameters for initalization:
         d (int): The original dimensionality of the data.
         m (int): The number of hash functions to use.
         s (int): The size of the sample to take from the original data dimensions.
         w (float): The width of the hash bins.
+
+    Methods:
+        sampling_signature (np.array) -> Signature: Projects a data point into the NH space and returns its signature.
+
+        hash_data (np.array) -> np.array: Hashes a given data point into a series of binary signatures
+                                          based on the nearest hyperplane hashing method.
+    
+        hash_query(query: np.array) -> np.array: Hashes a query into binary signatures,
+                                                 analogous to `hash_data` but tailored for query handling.
+    
+        build_index(data: np.ndarray): Constructs the hash index for a dataset,
+                                       enabling efficient nearest neighbour searches.
+    
+        nns(param: Query) -> List[IdxVal]: Performs a nearest neighbour search for a given query using the pre-built index.
     """
     def __init__(self, d: int, m: int, s: int, w: float):
-        """
-        Initializes the NHHash object with the given parameters.
-        
-        Parameters:
-            d (int): The original dimensionality of the data.
-            m (int): The number of hash functions to use.
-            s (int): The size of the sample to take from the original data dimensions.
-            w (float): The width of the hash bins.
-        """
         self.m = m
         self.w = w
         self.nhdim = d * (d + 1) // 2 + 1

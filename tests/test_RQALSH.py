@@ -25,20 +25,20 @@ def test_calc_hash_value(setup_rqalsh):
     tid = 1
     data = np.random.rand(rqalsh.dim)
     # Just testing if it executes without error as actual value depends on random a
-    assert isinstance(rqalsh.calc_hash_value(tid, data), float), "Hash value should be a float."
+    assert isinstance(rqalsh._calc_hash_value(tid, data), float), "Hash value should be a float."
 
 def test_hash_value_with_zero_vector(setup_rqalsh):
     rqalsh = setup_rqalsh
     zero_vector = np.zeros(rqalsh.dim)
     tid = 0
-    hash_value = rqalsh.calc_hash_value(tid, zero_vector)
+    hash_value = rqalsh._calc_hash_value(tid, zero_vector)
     assert isinstance(hash_value, float), "Hash value should be a float for zero vector input."
 
 def test_hash_value_with_negative_values(setup_rqalsh):
     rqalsh = setup_rqalsh
     negative_vector = -np.ones(rqalsh.dim)
     tid = 0
-    hash_value = rqalsh.calc_hash_value(tid, negative_vector)
+    hash_value = rqalsh._calc_hash_value(tid, negative_vector)
     assert isinstance(hash_value, float), "Hash value should be a float for negative vector input."
 
 def test_get_search_position(setup_rqalsh):
@@ -65,7 +65,7 @@ def test_calc_hash_value_1(setup_rqalsh):
     last = 0.0
     data = [IdxVal(0, 0.5), IdxVal(1, 0.5)]
     # Test calculates without error, actual value depends on a
-    assert isinstance(rqalsh.calc_hash_value_1(d, tid, last, data), float), "Hash value should be a float."
+    assert isinstance(rqalsh._calc_hash_value_1(d, tid, last, data), float), "Hash value should be a float."
 
 def test_calc_hash_value_2(setup_rqalsh):
     rqalsh = setup_rqalsh
@@ -73,7 +73,7 @@ def test_calc_hash_value_2(setup_rqalsh):
     tid = 0
     data = [IdxVal(0, 0.5), IdxVal(1, 0.5)]
     # Test calculates without error, actual value depends on a
-    assert isinstance(rqalsh.calc_hash_value_2(d, tid, data), float), "Hash value should be a float."
+    assert isinstance(rqalsh._calc_hash_value_2(d, tid, data), float), "Hash value should be a float."
 
 def test_dynamic_separation_counting(setup_rqalsh):
     rqalsh = setup_rqalsh

@@ -19,6 +19,11 @@ class EHHash(Hash):
         l (int): The number of layers in the hash function.
         randv (np.array): A numpy array of random vectors used for hashing.
 
+    Parameters for initialization:
+        d (int): The dimensionality of the input data.
+        m (int): The number of hyperplanes used for hashing in each layer.
+        l (int): The number of hash layers used to increase the robustness of the search.
+
     Methods:
         hash_data(data: np.array) -> np.array: Hashes a given data point into a series of binary signatures
                                                based on the embedding hyperplane method.
@@ -29,11 +34,6 @@ class EHHash(Hash):
         build_index(data: np.ndarray): Constructs the hash index for a dataset,
                                        enabling efficient nearest neighbour searches.
         nns(param: Query) -> List[IdxVal]: Performs a nearest neighbour search for a given query using the pre-built index.
-
-    Parameters for initialization:
-        d (int): The dimensionality of the input data.
-        m (int): The number of hyperplanes used for hashing in each layer.
-        l (int): The number of hash layers used to increase the robustness of the search.
     """
     def __init__(self, d: int, m: int, l: int):
         """

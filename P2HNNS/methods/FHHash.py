@@ -39,27 +39,35 @@ class FHHash(Hash):
         m (int): The number of hash functions to be used in RQALSH.
         max_blocks (int): Maximum number of blocks into which the dataset is divided.
 
-    Methods:
-        
-
     Parameters for initalization:
         d (int): Original dimensionality of the data.
         s (int): Number of samples to be taken from each data point.
         b (float): Base radius parameter for dataset division.
         m (int): Number of hash functions for RQALSH.
         max_blocks (int): Maximum number of data blocks.
+
+    Methods:
+        hash_data(data: np.ndarray) -> Transform: Transforms and hashes the input data into 
+                                                  the furthest hyperplane space for indexing.
+
+        calc_transform_dist(fhdim: int, last: float, l2centroid: float, sample: List[IdxVal], centroid: np.array) -> float:
+            Calculates the transformed distance between a data point and the centroid in the furthest hyperplane space.
+
+        build_index(data: np.ndarray): Builds the indexing structure for the given data 
+                                       using the Furthest Hyperplane hashing method.
+
+        query(query: np.array) -> List[IdxVal]: Samples a query hyperplane for nearest neighbor search, 
+                                                preparing it for transformation and comparison against the index.
+
+        get_sample_query(query: np.array) -> List[IdxVal]: Transforms a query hyperplane into the furthest hyperplane space 
+                                                           for querying the index.
+
+        nns(param: FHQuery) -> List[IdxVal]: Performs the nearest neighbor search for a given query in the indexed data.
+
+        _norm(idxvals: List[IdxVal]) -> float: Calculates the L2-norm squared of the feature vector 
+                                               represented by IdxVal objects.        
     """
     def __init__(self, d, s, b,m, max_blocks):
-        """
-        Initializes the FHHash instance.
-
-        Parameters:
-            d (int): Original dimensionality of the data.
-            s (int): Number of samples to be taken from each data point.
-            b (float): Base radius parameter for dataset division.
-            m (int): Number of hash functions for RQALSH.
-            max_blocks (int): Maximum number of data blocks.
-        """
         if b > 1.0:
             raise ValueError("b must be less than or equal to 1.0")
         self.hashs = []
@@ -181,7 +189,7 @@ class FHHash(Hash):
         pbar.close()
         assert start == n
 
-    def query(self, query):
+    def query(self, query: np.array) -> List[IdxVal]:
         """
         Samples a query point for nearest neighbor search.
 
@@ -205,7 +213,7 @@ class FHHash(Hash):
         """
         # calculate sampleQuery with query transformation
         sample = self.query(query)
-        norm = self.norm(sample)
+        norm = self._norm(sample)
 
         lamda = np.sqrt(self.M / norm)
 
@@ -262,7 +270,7 @@ class FHHash(Hash):
 
         return result
 
-    def norm(self, idxvals: List[IdxVal]) -> float:
+    def _norm(self, idxvals: List[IdxVal]) -> float:
         """
         Calculates the L2-norm squared of the feature vector represented by IdxVal objects.
 
