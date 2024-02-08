@@ -71,12 +71,50 @@
 <span class="kn">from</span> <span class="nn">.IdxVal</span> <span class="kn">import</span> <span class="n">IdxVal</span>
 
 <div class="viewcode-block" id="RandomSampler"><a class="viewcode-back" href="../../../P2HNNS.utils.html#P2HNNS.utils.RandomSampler.RandomSampler">[docs]</a><span class="k">class</span> <span class="nc">RandomSampler</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class performing random sampling from a dataset using a strategy combining probabilistic and deterministic</span>
+<span class="sd">    features to ensure a diverse and representative selection of samples. This sampler is particularly designed to</span>
+<span class="sd">    handle high-dimensional data and is capable of capturing both individual and interactive effects between</span>
+<span class="sd">    data dimensions through a unique sampling mechanism.</span>
+<span class="sd">    </span>
+<span class="sd">    The sampling strategy involves:</span>
+<span class="sd">    1. Creating a cumulative probability vector based on the squared values of the data, emphasizing </span>
+<span class="sd">       regions with higher magnitude for selection.</span>
+<span class="sd">    2. Deterministically selecting the initial sample from the end of the dimension space, ensuring the</span>
+<span class="sd">       inclusion of edge data.</span>
+<span class="sd">    3. Probabilistically selecting subsequent samples based on the cumulative probability distribution,</span>
+<span class="sd">       with adjustments to explore cross-dimension interactions.</span>
+<span class="sd">    4. Preventing the selection of duplicate samples by maintaining a record of already-selected samples.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        dim (int): The dimension of the input data.</span>
+<span class="sd">        afterdim (int): The computed dimension to consider after processing, accommodating cross-dimension sampling.</span>
+<span class="sd">        sampledim (int): The dimension of the sample to be drawn, calculated as the product of `dim` and a scaling factor `s`.</span>
+
+<span class="sd">    Parameters for initialization:</span>
+<span class="sd">        dim (int): The dimension of the input data.</span>
+<span class="sd">        s (int): A scaling factor to determine the size of the sample relative to the input data&#39;s dimension.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">=</span> <span class="n">dim</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">afterdim</span> <span class="o">=</span> <span class="n">dim</span> <span class="o">*</span> <span class="p">(</span><span class="n">dim</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sampledim</span> <span class="o">=</span> <span class="n">dim</span> <span class="o">*</span> <span class="n">s</span>
 
 <div class="viewcode-block" id="RandomSampler.sampling"><a class="viewcode-back" href="../../../P2HNNS.utils.html#P2HNNS.utils.RandomSampler.RandomSampler.sampling">[docs]</a>    <span class="k">def</span> <span class="nf">sampling</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">IdxVal</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Perform random sampling from the given data utilizing a strategy that combines probabilistic</span>
+<span class="sd">        selection with deterministic checks to ensure a diverse and comprehensive sample set. This method</span>
+<span class="sd">        specifically targets capturing both the individual and interactive effects between data dimensions</span>
+<span class="sd">        through a nuanced sampling mechanism.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            data (np.array): The input data array from which to sample.</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            List[IdxVal]: A list of IdxVal objects representing the sampled indices and their corresponding</span>
+<span class="sd">                          values squared (for individual dimensions) or multiplied (for cross dimensions),</span>
+<span class="sd">                          ensuring a varied representation of the dataset&#39;s characteristics.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">sample</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampledim</span>
 
         <span class="n">prob</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">probability_vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
@@ -108,6 +146,16 @@
         <span class="k">return</span> <span class="n">sample</span><span class="p">[:</span><span class="n">cnt</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="RandomSampler.probability_vector"><a class="viewcode-back" href="../../../P2HNNS.utils.html#P2HNNS.utils.RandomSampler.RandomSampler.probability_vector">[docs]</a>    <span class="k">def</span> <span class="nf">probability_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generate a probability vector from the input data.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            dim (int): The dimension of the input data.</span>
+<span class="sd">            data (np.array): The input data array.</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            np.array: A probability vector for the input data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">prob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
         <span class="n">prob</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
@@ -115,6 +163,19 @@
         <span class="k">return</span> <span class="n">prob</span></div>
 
 <div class="viewcode-block" id="RandomSampler.search_idx_from"><a class="viewcode-back" href="../../../P2HNNS.utils.html#P2HNNS.utils.RandomSampler.RandomSampler.search_idx_from">[docs]</a>    <span class="k">def</span> <span class="nf">search_idx_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">prob</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generate a probability vector from the input data, which is used to guide the probabilistic</span>
+<span class="sd">        selection of samples. This vector is a cumulative sum of the squared values of the data,</span>
+<span class="sd">        emphasizing areas of higher magnitude for selection, facilitating a biased sampling towards</span>
+<span class="sd">        significant features in the data.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            dim (int): The dimension of the input data.</span>
+<span class="sd">            data (np.array): The input data array.</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            np.array: A probability vector for the input data, used to guide the sampling process.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">end</span> <span class="o">=</span> <span class="n">prob</span><span class="p">[</span><span class="n">d</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
         <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;must 0 &lt; sigma(</span><span class="si">{</span><span class="n">end</span><span class="si">}</span><span class="s2">)&quot;</span>
         <span class="c1"># Generate a random Gaussian number with mean 0 and standard deviation &#39;end&#39;</span>

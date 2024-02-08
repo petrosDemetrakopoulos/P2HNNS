@@ -75,19 +75,12 @@
 <span class="sd">    of the query hyperplane, the dataset against which the query is executed, and parameters such as the number</span>
 <span class="sd">    of top results to return and a limit for search optimization.</span>
 
-<span class="sd">    Attributes:</span>
+<span class="sd">    Attributes / Parameters for initialization:</span>
 <span class="sd">        query (np.array): The hyperplane coefficients representing the query.</span>
 <span class="sd">        data (np.ndarray): The dataset array against which the query will be executed.</span>
 <span class="sd">        top (int): The number of top nearest neighbors to return.</span>
 <span class="sd">        limit (int): A limit for search optimization, possibly affecting the search algorithm&#39;s performance or accuracy.</span>
 <span class="sd">        dist (Dist): The distance function used to calculate distances between points and the hyperplane.</span>
-
-<span class="sd">    Parameters:</span>
-<span class="sd">        query (np.array): An array representing the query hyperplane.</span>
-<span class="sd">        data (np.ndarray): The dataset to search against.</span>
-<span class="sd">        top (int): The number of nearest neighbors to find.</span>
-<span class="sd">        limit (int): A search optimization parameter.</span>
-<span class="sd">        dist (Dist): An instance of a distance function class used for calculating distances.</span>
 
 <span class="sd">    Methods:</span>
 <span class="sd">        copy(self, dist: Dist) -&gt; &#39;Query&#39;:</span>
@@ -95,17 +88,6 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">top</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">dist</span><span class="p">:</span> <span class="n">Dist</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Initializes a new Query instance with the specified query hyperplane, dataset, top results limit,</span>
-<span class="sd">        search limit, and distance function.</span>
-
-<span class="sd">        Parameters:</span>
-<span class="sd">            query (np.array): Coefficients defining the query hyperplane.</span>
-<span class="sd">            data (np.ndarray): The dataset in which to perform the search.</span>
-<span class="sd">            top (int): The number of nearest neighbors to retrieve.</span>
-<span class="sd">            limit (int): A limit for optimizing the search process.</span>
-<span class="sd">            dist (Dist): The distance function to use for calculating point-to-hyperplane distances.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="n">query</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">top</span> <span class="o">=</span> <span class="n">top</span>

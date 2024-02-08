@@ -104,32 +104,27 @@
 <span class="sd">        projb (np.array): Bias terms for linear projection in NH space.</span>
 <span class="sd">        bucketerp (SortedLCCS): Data structure for storing and searching hashed data.</span>
 
-<span class="sd">    Methods:</span>
-<span class="sd">        sampling_signature (np.array) -&gt; Signature: Projects a data point into the NH space and returns its signature.</span>
-<span class="sd">        hash_data (np.array) -&gt; np.array: Hashes a given data point into a series of binary signatures</span>
-<span class="sd">                                          based on the nearest hyperplane hashing method.</span>
-<span class="sd">        hash_query(query: np.array) -&gt; np.array: Hashes a query into binary signatures,</span>
-<span class="sd">                                                 analogous to `hash_data` but tailored for query handling.</span>
-<span class="sd">        build_index(data: np.ndarray): Constructs the hash index for a dataset,</span>
-<span class="sd">                                       enabling efficient nearest neighbour searches.</span>
-<span class="sd">        nns(param: Query) -&gt; List[IdxVal]: Performs a nearest neighbour search for a given query using the pre-built index.</span>
-
 <span class="sd">    Parameters for initalization:</span>
 <span class="sd">        d (int): The original dimensionality of the data.</span>
 <span class="sd">        m (int): The number of hash functions to use.</span>
 <span class="sd">        s (int): The size of the sample to take from the original data dimensions.</span>
 <span class="sd">        w (float): The width of the hash bins.</span>
+
+<span class="sd">    Methods:</span>
+<span class="sd">        sampling_signature (np.array) -&gt; Signature: Projects a data point into the NH space and returns its signature.</span>
+
+<span class="sd">        hash_data (np.array) -&gt; np.array: Hashes a given data point into a series of binary signatures</span>
+<span class="sd">                                          based on the nearest hyperplane hashing method.</span>
+<span class="sd">    </span>
+<span class="sd">        hash_query(query: np.array) -&gt; np.array: Hashes a query into binary signatures,</span>
+<span class="sd">                                                 analogous to `hash_data` but tailored for query handling.</span>
+<span class="sd">    </span>
+<span class="sd">        build_index(data: np.ndarray): Constructs the hash index for a dataset,</span>
+<span class="sd">                                       enabling efficient nearest neighbour searches.</span>
+<span class="sd">    </span>
+<span class="sd">        nns(param: Query) -&gt; List[IdxVal]: Performs a nearest neighbour search for a given query using the pre-built index.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Initializes the NHHash object with the given parameters.</span>
-<span class="sd">        </span>
-<span class="sd">        Parameters:</span>
-<span class="sd">            d (int): The original dimensionality of the data.</span>
-<span class="sd">            m (int): The number of hash functions to use.</span>
-<span class="sd">            s (int): The size of the sample to take from the original data dimensions.</span>
-<span class="sd">            w (float): The width of the hash bins.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="n">m</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">w</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nhdim</span> <span class="o">=</span> <span class="n">d</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>

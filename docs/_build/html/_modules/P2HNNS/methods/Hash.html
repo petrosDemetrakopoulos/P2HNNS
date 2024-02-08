@@ -76,8 +76,9 @@
 <div class="viewcode-block" id="Hash"><a class="viewcode-back" href="../../../P2HNNS.methods.html#P2HNNS.methods.Hash.Hash">[docs]</a><span class="k">class</span> <span class="nc">Hash</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Abstract base class for implementing hash-based nearest neighbors search algorithms. This class defines</span>
-<span class="sd">    the interface for hashing data points and queries, building the index for fast nearest neighbor searches,</span>
-<span class="sd">    and performing the actual search. Concrete implementations must provide functionality for these operations,</span>
+<span class="sd">    the interface for hashing data points and hyperplane queries, building the index for fast point-to-hyperplane </span>
+<span class="sd">    nearest neighbor searches, and performing the actual search. </span>
+<span class="sd">    Concrete implementations (BHHash, EHHash, MHHash, NHHash and FHHash) provide functionality for these operations,</span>
 <span class="sd">    tailored to specific hashing techniques.</span>
 
 <span class="sd">    Methods:</span>

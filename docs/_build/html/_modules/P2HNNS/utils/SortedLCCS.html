@@ -124,6 +124,42 @@
 <span class="sd">        data (np.ndarray): The dataset.</span>
 <span class="sd">        sortedidx (List[List[int]]): Indices of elements sorted per dimension.</span>
 <span class="sd">        nextidx (List[List[int]]): Links to next elements for dimensionality-reduced search.</span>
+
+<span class="sd">    Parameters for initialization:</span>
+<span class="sd">        step (int): The step size for dimensionality reduction in search.</span>
+<span class="sd">        data (np.ndarray): The dataset.</span>
+<span class="sd">        scan_size (int): The size of the range to perform linear scans in binary search fallback.</span>
+
+<span class="sd">    Methods:</span>
+<span class="sd">        compare_dim_vectors(xs:np.array, ys: np.array, start: int, walked: int) -&gt; CmpLoc: </span>
+<span class="sd">            Compares two arrays element-wise in a circular manner.</span>
+
+<span class="sd">        compare_dim_indices(idx1: int, idx2: int, start: int, walked: int) -&gt; CmpLoc: </span>
+<span class="sd">            Compares elements at given indices of the dataset in a circular manner.</span>
+
+<span class="sd">        get_sort_idx(dim: int, n: int) -&gt; List[List[int]]: Sorts indices of the dataset for each dimension.</span>
+
+<span class="sd">        get_next_link(step: int) -&gt; np.ndarray: </span>
+<span class="sd">            Creates links for each element to its successor in a dimensionally reduced search space.</span>
+
+<span class="sd">        get_data(query_dim: int, idx: int) -&gt; np.array: </span>
+<span class="sd">            Retrieves data from the dataset at a given index sorted by a specific dimension.</span>
+
+<span class="sd">        scan_loc(query: np.array, query_dim: int, low: int, low_len: int, high: int, high_len: int) -&gt; Loc: </span>
+<span class="sd">            Performs a linear scan to refine the location of a query.</span>
+
+<span class="sd">        binary_search_loc(query: np.array, query_dim: int, low: int, low_len: int, high: int, high_len: int) -&gt; Loc: </span>
+<span class="sd">            Uses binary search to find the location of a query.</span>
+
+<span class="sd">        get_loc(query: np.array, query_dim: int) -&gt; Loc: Finds the location of a query within the dataset.</span>
+
+<span class="sd">        find_matched_locs(query: np.array) -&gt; Locs: Finds locations in the dataset that match the query across various dimensions.</span>
+
+<span class="sd">        search(scan_step: int, query: np.array, f: Callable) -&gt; Dict: </span>
+<span class="sd">            Searches for matches to the query and applies a function to each match.</span>
+
+<span class="sd">        candidates_by_scan(scan_step: int, query: np.array, f: Callable) -&gt; Dict: </span>
+<span class="sd">            Identifies candidate matches for the query by scanning.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">scan_size</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">scan_size</span> <span class="o">=</span> <span class="n">scan_size</span>
@@ -158,11 +194,11 @@
                 <span class="k">return</span> <span class="n">CmpLoc</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">walked</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">CmpLoc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="SortedLCCS.compare_dim_lambda"><a class="viewcode-back" href="../../../P2HNNS.utils.html#P2HNNS.utils.SortedLCCS.SortedLCCS.compare_dim_lambda">[docs]</a>    <span class="k">def</span> <span class="nf">compare_dim_lambda</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx1</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_compare_dim_lambda</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx1</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="k">def</span> <span class="nf">cmp</span><span class="p">(</span><span class="n">idx2</span><span class="p">):</span>
             <span class="n">matched</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compare_dim_indices</span><span class="p">(</span><span class="n">idx1</span><span class="p">,</span><span class="n">idx2</span><span class="p">,</span><span class="n">start</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">matched</span><span class="o">.</span><span class="n">cmp</span>
-        <span class="k">return</span> <span class="n">cmp</span></div>
+        <span class="k">return</span> <span class="n">cmp</span>
 
 <div class="viewcode-block" id="SortedLCCS.compare_dim_indices"><a class="viewcode-back" href="../../../P2HNNS.utils.html#P2HNNS.utils.SortedLCCS.SortedLCCS.compare_dim_indices">[docs]</a>    <span class="k">def</span> <span class="nf">compare_dim_indices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">idx1</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">idx2</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">walked</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CmpLoc</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -194,7 +230,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">sorted_idx</span> <span class="o">=</span> <span class="p">[[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dim</span><span class="p">)]</span>
         <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dim</span><span class="p">):</span>
-            <span class="n">sorted_idx</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">sorted_idx</span><span class="p">[</span><span class="n">d</span><span class="p">],</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="n">d</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">compare_dim_lambda</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">d</span><span class="p">)(</span><span class="n">i</span><span class="p">))</span>
+            <span class="n">sorted_idx</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">sorted_idx</span><span class="p">[</span><span class="n">d</span><span class="p">],</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="n">d</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compare_dim_lambda</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">d</span><span class="p">)(</span><span class="n">i</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">sorted_idx</span></div>
 
 <div class="viewcode-block" id="SortedLCCS.get_next_link"><a class="viewcode-back" href="../../../P2HNNS.utils.html#P2HNNS.utils.SortedLCCS.SortedLCCS.get_next_link">[docs]</a>    <span class="k">def</span> <span class="nf">get_next_link</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">step</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
@@ -264,8 +300,7 @@
         <span class="c1"># Reach the end</span>
         <span class="k">return</span> <span class="n">Loc</span><span class="p">(</span><span class="n">high</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">last_dim</span><span class="p">,</span> <span class="n">high_len</span><span class="p">)</span></div>
 
-    <span class="c1"># Define the equivalent of BiIntFunction</span>
-<div class="viewcode-block" id="SortedLCCS.cmp_function"><a class="viewcode-back" href="../../../P2HNNS.utils.html#P2HNNS.utils.SortedLCCS.SortedLCCS.cmp_function">[docs]</a>    <span class="k">def</span> <span class="nf">cmp_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">i</span><span class="p">,</span> <span class="n">prev</span><span class="p">,</span> <span class="n">query_dim</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_cmp_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">i</span><span class="p">,</span> <span class="n">prev</span><span class="p">,</span> <span class="n">query_dim</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CmpLoc</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Compares data at a given index with the query, used as a callback for binary search.</span>
 
@@ -279,7 +314,7 @@
 <span class="sd">            CmpLoc: The result of the comparison and the distance walked.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">dpa</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">query_dim</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">compare_dim_vectors</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">dpa</span><span class="p">,</span> <span class="n">query_dim</span><span class="p">,</span> <span class="n">prev</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">compare_dim_vectors</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">dpa</span><span class="p">,</span> <span class="n">query_dim</span><span class="p">,</span> <span class="n">prev</span><span class="p">)</span>
 
 <div class="viewcode-block" id="SortedLCCS.binary_search_loc"><a class="viewcode-back" href="../../../P2HNNS.utils.html#P2HNNS.utils.SortedLCCS.SortedLCCS.binary_search_loc">[docs]</a>    <span class="k">def</span> <span class="nf">binary_search_loc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">query</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">query_dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">low</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">low_len</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">high</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">high_len</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Loc</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -306,7 +341,7 @@
 
             <span class="c1"># Binary search</span>
             <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">next_low</span> <span class="o">+</span> <span class="n">next_high</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
-            <span class="n">loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmp_function</span><span class="p">(</span><span class="n">mid</span><span class="p">,</span> <span class="n">cur_dim</span><span class="p">,</span> <span class="n">query_dim</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
+            <span class="n">loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmp_function</span><span class="p">(</span><span class="n">mid</span><span class="p">,</span> <span class="n">cur_dim</span><span class="p">,</span> <span class="n">query_dim</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
 
             <span class="c1"># If query &lt; mid</span>
             <span class="k">if</span> <span class="n">loc</span><span class="o">.</span><span class="n">cmp</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
@@ -388,7 +423,7 @@
 
         <span class="k">return</span> <span class="n">Locs</span><span class="p">(</span><span class="n">idxes</span><span class="p">,</span> <span class="n">lowlens</span><span class="p">,</span> <span class="n">highlens</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="SortedLCCS.search"><a class="viewcode-back" href="../../../P2HNNS.utils.html#P2HNNS.utils.SortedLCCS.SortedLCCS.search">[docs]</a>    <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">scan_step</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<div class="viewcode-block" id="SortedLCCS.search"><a class="viewcode-back" href="../../../P2HNNS.utils.html#P2HNNS.utils.SortedLCCS.SortedLCCS.search">[docs]</a>    <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">scan_step</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Searches for matches to the query in the dataset and applies a callable to each match.</span>
 

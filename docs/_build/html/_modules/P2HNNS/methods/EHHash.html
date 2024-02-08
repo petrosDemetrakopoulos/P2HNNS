@@ -86,31 +86,24 @@
 <span class="sd">        l (int): The number of layers in the hash function.</span>
 <span class="sd">        randv (np.array): A numpy array of random vectors used for hashing.</span>
 
-<span class="sd">    Methods:</span>
-<span class="sd">        hash_data(data: np.array) -&gt; np.array: Hashes a given data point into a series of binary signatures</span>
-<span class="sd">                                               based on the embedding hyperplane method.</span>
-<span class="sd">        hash_query(query: np.array) -&gt; np.array: Hashes a query into binary signatures,</span>
-<span class="sd">                                                 analogous to `hash_data` but tailored for query handling.</span>
-<span class="sd">        _hash(data: np.array, pos: int) -&gt; float: A helper function that computes the hash value for a segment of the data</span>
-<span class="sd">                                                  using a subset of the random vectors.</span>
-<span class="sd">        build_index(data: np.ndarray): Constructs the hash index for a dataset,</span>
-<span class="sd">                                       enabling efficient nearest neighbour searches.</span>
-<span class="sd">        nns(param: Query) -&gt; List[IdxVal]: Performs a nearest neighbour search for a given query using the pre-built index.</span>
-
 <span class="sd">    Parameters for initialization:</span>
 <span class="sd">        d (int): The dimensionality of the input data.</span>
 <span class="sd">        m (int): The number of hyperplanes used for hashing in each layer.</span>
 <span class="sd">        l (int): The number of hash layers used to increase the robustness of the search.</span>
+
+<span class="sd">    Methods:</span>
+<span class="sd">        hash_data(data: np.array) -&gt; np.array: Hashes a given data point into a series of binary signatures</span>
+<span class="sd">                                               based on the embedding hyperplane method.</span>
+
+<span class="sd">        hash_query(query: np.array) -&gt; np.array: Hashes a query into binary signatures,</span>
+<span class="sd">                                                 analogous to `hash_data` but tailored for query handling.</span>
+
+<span class="sd">        build_index(data: np.ndarray): Constructs the hash index for a dataset,</span>
+<span class="sd">                                       enabling efficient nearest neighbour searches.</span>
+
+<span class="sd">        nns(param: Query) -&gt; List[IdxVal]: Performs a nearest neighbour search for a given query using the pre-built index.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">l</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Initializes the EHHash object with specified dimensions and parameters.</span>
-
-<span class="sd">        Parameters:</span>
-<span class="sd">            d (int): The dimensionality of the input data.</span>
-<span class="sd">            m (int): The number of hyperplanes used for hashing each layer.</span>
-<span class="sd">            l (int): The number of layers in the hash function.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">buckets</span> <span class="o">=</span> <span class="n">HashBucket</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">l</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="n">m</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">l</span> <span class="o">=</span> <span class="n">l</span>

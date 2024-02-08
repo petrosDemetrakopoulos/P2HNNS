@@ -139,6 +139,12 @@ between the data point and each pair of random vectors, allowing for the capture
 </dl>
 </dd></dl>
 
+<dl class="simple">
+<dt>Parameters for initialization:</dt><dd><p>d (int): The dimensionality of the input data vectors.
+m (int): The number of hyperplanes for each hash function.
+l (int): The number of hash functions to generate.</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">hash_data(data</span></span></dt>
@@ -166,12 +172,6 @@ enabling efficient nearest neighbour searches.</p>
 <dd><p>Query) -&gt; List[IdxVal]: Performs a nearest neighbour search for a given query using the pre-built index.</p>
 </dd></dl>
 
-<dl class="simple">
-<dt>Parameters for initialization:</dt><dd><p>d (int): The dimensionality of the input data vectors.
-m (int): The number of hyperplanes for each hash function.
-l (int): The number of hash functions to generate.</p>
-</dd>
-</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="P2HNNS.methods.BHHash.BHHash.build_index">
 <span class="sig-name descname"><span class="pre">build_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/methods/BHHash.html#BHHash.build_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.methods.BHHash.BHHash.build_index" title="Permalink to this definition"></a></dt>
@@ -307,6 +307,12 @@ nearest neighbour searches using these signatures.</p>
 </dl>
 </dd></dl>
 
+<dl class="simple">
+<dt>Parameters for initialization:</dt><dd><p>d (int): The dimensionality of the input data.
+m (int): The number of hyperplanes used for hashing in each layer.
+l (int): The number of hash layers used to increase the robustness of the search.</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">hash_data(data</span></span></dt>
@@ -323,13 +329,6 @@ analogous to <cite>hash_data</cite> but tailored for query handling.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">_hash(data</span></span></dt>
-<dd><p>np.array, pos: int) -&gt; float: A helper function that computes the hash value for a segment of the data
-using a subset of the random vectors.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">build_index(data</span></span></dt>
 <dd><p>np.ndarray): Constructs the hash index for a dataset,
 enabling efficient nearest neighbour searches.</p>
@@ -341,12 +340,6 @@ enabling efficient nearest neighbour searches.</p>
 <dd><p>Query) -&gt; List[IdxVal]: Performs a nearest neighbour search for a given query using the pre-built index.</p>
 </dd></dl>
 
-<dl class="simple">
-<dt>Parameters for initialization:</dt><dd><p>d (int): The dimensionality of the input data.
-m (int): The number of hyperplanes used for hashing in each layer.
-l (int): The number of hash layers used to increase the robustness of the search.</p>
-</dd>
-</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="P2HNNS.methods.EHHash.EHHash.build_index">
 <span class="sig-name descname"><span class="pre">build_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/methods/EHHash.html#EHHash.build_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.methods.EHHash.EHHash.build_index" title="Permalink to this definition"></a></dt>
@@ -500,7 +493,6 @@ l (int): The number of hash layers used to increase the robustness of the search
 </dl>
 </dd></dl>
 
-<p>Methods:</p>
 <dl class="simple">
 <dt>Parameters for initalization:</dt><dd><p>d (int): Original dimensionality of the data.
 s (int): Number of samples to be taken from each data point.
@@ -509,6 +501,47 @@ m (int): Number of hash functions for RQALSH.
 max_blocks (int): Maximum number of data blocks.</p>
 </dd>
 </dl>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">hash_data(data</span></span></dt>
+<dd><p>np.ndarray) -&gt; Transform: Transforms and hashes the input data into
+the furthest hyperplane space for indexing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">calc_transform_dist(fhdim</span></span></dt>
+<dd><p>int, last: float, l2centroid: float, sample: List[IdxVal], centroid: np.array) -&gt; float:
+Calculates the transformed distance between a data point and the centroid in the furthest hyperplane space.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">build_index(data</span></span></dt>
+<dd><p>np.ndarray): Builds the indexing structure for the given data
+using the Furthest Hyperplane hashing method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">query(query</span></span></dt>
+<dd><p>np.array) -&gt; List[IdxVal]: Samples a query hyperplane for nearest neighbor search,
+preparing it for transformation and comparison against the index.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_sample_query(query</span></span></dt>
+<dd><p>np.array) -&gt; List[IdxVal]: Transforms a query hyperplane into the furthest hyperplane space
+for querying the index.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">nns(param</span></span></dt>
+<dd><p>FHQuery) -&gt; List[IdxVal]: Performs the nearest neighbor search for a given query in the indexed data.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="P2HNNS.methods.FHHash.FHHash.build_index">
 <span class="sig-name descname"><span class="pre">build_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/methods/FHHash.html#FHHash.build_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.methods.FHHash.FHHash.build_index" title="Permalink to this definition"></a></dt>
@@ -614,25 +647,8 @@ points in a 2D array format.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="P2HNNS.methods.FHHash.FHHash.norm">
-<span class="sig-name descname"><span class="pre">norm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idxvals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="P2HNNS.utils.html#P2HNNS.utils.IdxVal.IdxVal" title="P2HNNS.utils.IdxVal.IdxVal"><span class="pre">IdxVal</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/P2HNNS/methods/FHHash.html#FHHash.norm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.methods.FHHash.FHHash.norm" title="Permalink to this definition"></a></dt>
-<dd><p>Calculates the L2-norm squared of the feature vector represented by IdxVal objects.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>idxvals</strong> (<em>List</em><em>[</em><a class="reference internal" href="P2HNNS.utils.html#P2HNNS.utils.IdxVal.IdxVal" title="P2HNNS.utils.IdxVal.IdxVal"><em>IdxVal</em></a><em>]</em>) – The feature vector represented as a list of IdxVal objects.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The L2-norm squared of the feature vector.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="P2HNNS.methods.FHHash.FHHash.query">
-<span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/methods/FHHash.html#FHHash.query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.methods.FHHash.FHHash.query" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="P2HNNS.utils.html#P2HNNS.utils.IdxVal.IdxVal" title="P2HNNS.utils.IdxVal.IdxVal"><span class="pre">IdxVal</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/P2HNNS/methods/FHHash.html#FHHash.query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.methods.FHHash.FHHash.query" title="Permalink to this definition"></a></dt>
 <dd><p>Samples a query point for nearest neighbor search.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -716,8 +732,9 @@ points in a 2D array format.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">P2HNNS.methods.Hash.</span></span><span class="sig-name descname"><span class="pre">Hash</span></span><a class="reference internal" href="_modules/P2HNNS/methods/Hash.html#Hash"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.methods.Hash.Hash" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Abstract base class for implementing hash-based nearest neighbors search algorithms. This class defines
-the interface for hashing data points and queries, building the index for fast nearest neighbor searches,
-and performing the actual search. Concrete implementations must provide functionality for these operations,
+the interface for hashing data points and hyperplane queries, building the index for fast point-to-hyperplane
+nearest neighbor searches, and performing the actual search.
+Concrete implementations (BHHash, EHHash, MHHash, NHHash and FHHash) provide functionality for these operations,
 tailored to specific hashing techniques.</p>
 <dl class="py method">
 <dt class="sig sig-object py">
@@ -889,45 +906,6 @@ enabling approximate nearest neighbor queries with reduced computational cost.</
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="P2HNNS.methods.MHHash.MHHash.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimension</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/methods/MHHash.html#MHHash.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.methods.MHHash.MHHash.__init__" title="Permalink to this definition"></a></dt>
-<dd><p>Initializes the MHHash object with the specified dimensions,
-hash functions, and tables.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="P2HNNS.methods.MHHash.MHHash.hash_data">
-<span class="sig-name descname"><span class="pre">hash_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/methods/MHHash.html#MHHash.hash_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.methods.MHHash.MHHash.hash_data" title="Permalink to this definition"></a></dt>
-<dd><p>Hashes the input data into <cite>l</cite> hash signatures, one for each hash table.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="P2HNNS.methods.MHHash.MHHash.hash_query">
-<span class="sig-name descname"><span class="pre">hash_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/methods/MHHash.html#MHHash.hash_query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.methods.MHHash.MHHash.hash_query" title="Permalink to this definition"></a></dt>
-<dd><p>Similar to <cite>hash_data</cite>, but hashes a query for searching the index.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="P2HNNS.methods.MHHash.MHHash._hash">
-<span class="sig-name descname"><span class="pre">_hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/methods/MHHash.html#MHHash._hash"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.methods.MHHash.MHHash._hash" title="Permalink to this definition"></a></dt>
-<dd><p>A helper method to compute the hash value of a query/data point
-using the generated random vectors.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="P2HNNS.methods.MHHash.MHHash.build_index">
-<span class="sig-name descname"><span class="pre">build_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/methods/MHHash.html#MHHash.build_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.methods.MHHash.MHHash.build_index" title="Permalink to this definition"></a></dt>
-<dd><p>Indexes the provided dataset by hashing and storing the data points in the hash buckets.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="P2HNNS.methods.MHHash.MHHash.nns">
-<span class="sig-name descname"><span class="pre">nns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/methods/MHHash.html#MHHash.nns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.methods.MHHash.MHHash.nns" title="Permalink to this definition"></a></dt>
-<dd><p>Performs a nearest neighbor search for the given query,
-returning the closest points based on the query parameters.</p>
-</dd></dl>
-
 <dl class="simple">
 <dt>Parameters for initialization:</dt><dd><p>dimension (int): The dimensionality of the input data points.
 m (int): The number of hash functions per hash table.
@@ -935,6 +913,31 @@ l (int): The number of hash tables.
 M (int): The projection dimension for each hash function.</p>
 </dd>
 </dl>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">hash_data(data</span></span></dt>
+<dd><p>np.array) -&gt; np.array: Hashes the input data into <cite>l</cite> hash signatures, one for each hash table.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">hash_query(query</span></span></dt>
+<dd><p>np.array) -&gt; np.array: Similar to <cite>hash_data</cite>, but hashes a query for searching the index.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.methods.MHHash.MHHash.build_index">
+<span class="sig-name descname"><span class="pre">build_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/methods/MHHash.html#MHHash.build_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.methods.MHHash.MHHash.build_index" title="Permalink to this definition"></a></dt>
+<dd><p>Indexes the provided dataset by hashing and storing the data points in the hash buckets.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">nns(param</span></span></dt>
+<dd><p>Query) -&gt; List[IdxVal]: Performs a nearest neighbor search for the given query,
+returning the closest points based on the query parameters.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="id0">
 <span class="sig-name descname"><span class="pre">build_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/methods/MHHash.html#MHHash.build_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Permalink to this definition"></a></dt>
@@ -951,8 +954,8 @@ M (int): The projection dimension for each hash function.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id1">
-<span class="sig-name descname"><span class="pre">hash_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">array</span></span></span><a class="reference internal" href="_modules/P2HNNS/methods/MHHash.html#MHHash.hash_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id1" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="P2HNNS.methods.MHHash.MHHash.hash_data">
+<span class="sig-name descname"><span class="pre">hash_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">array</span></span></span><a class="reference internal" href="_modules/P2HNNS/methods/MHHash.html#MHHash.hash_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.methods.MHHash.MHHash.hash_data" title="Permalink to this definition"></a></dt>
 <dd><p>Hashes the input data using the MH hashing method to generate bucket keys.</p>
 <dl class="simple">
 <dt>Paramters:</dt><dd><p>data (np.array): A single data point to hash.</p>
@@ -969,8 +972,8 @@ M (int): The projection dimension for each hash function.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id2">
-<span class="sig-name descname"><span class="pre">hash_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">array</span></span></span><a class="reference internal" href="_modules/P2HNNS/methods/MHHash.html#MHHash.hash_query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id2" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="P2HNNS.methods.MHHash.MHHash.hash_query">
+<span class="sig-name descname"><span class="pre">hash_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">array</span></span></span><a class="reference internal" href="_modules/P2HNNS/methods/MHHash.html#MHHash.hash_query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.methods.MHHash.MHHash.hash_query" title="Permalink to this definition"></a></dt>
 <dd><p>Hashes the query data using the MH hashing method, with a modification for query purposes to generate bucket keys.</p>
 <dl class="simple">
 <dt>Paramters:</dt><dd><p>query (np.array): A single query point to hash.</p>
@@ -987,8 +990,8 @@ M (int): The projection dimension for each hash function.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id3">
-<span class="sig-name descname"><span class="pre">nns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="P2HNNS.utils.html#P2HNNS.utils.Query.Query" title="P2HNNS.utils.Query.Query"><span class="pre">Query</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="P2HNNS.utils.html#P2HNNS.utils.IdxVal.IdxVal" title="P2HNNS.utils.IdxVal.IdxVal"><span class="pre">IdxVal</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/P2HNNS/methods/MHHash.html#MHHash.nns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id3" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="P2HNNS.methods.MHHash.MHHash.nns">
+<span class="sig-name descname"><span class="pre">nns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="P2HNNS.utils.html#P2HNNS.utils.Query.Query" title="P2HNNS.utils.Query.Query"><span class="pre">Query</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="P2HNNS.utils.html#P2HNNS.utils.IdxVal.IdxVal" title="P2HNNS.utils.IdxVal.IdxVal"><span class="pre">IdxVal</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/P2HNNS/methods/MHHash.html#MHHash.nns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.methods.MHHash.MHHash.nns" title="Permalink to this definition"></a></dt>
 <dd><p>Performs a nearest neighbor search for the given query.</p>
 <dl class="simple">
 <dt>Paramters:</dt><dd><p>param (Query): A <cite>Query</cite> object containing the query hyperplane, distance function, and other query parameters.</p>
@@ -1104,6 +1107,13 @@ data points onto a set of hyperplanes, and then using these signatures for effic
 </dl>
 </dd></dl>
 
+<dl class="simple">
+<dt>Parameters for initalization:</dt><dd><p>d (int): The original dimensionality of the data.
+m (int): The number of hash functions to use.
+s (int): The size of the sample to take from the original data dimensions.
+w (float): The width of the hash bins.</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="P2HNNS.methods.NHHash.NHHash.sampling_signature">
 <span class="sig-name descname"><span class="pre">sampling_signature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">np.array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#P2HNNS.methods.NHHash.Signature" title="P2HNNS.methods.NHHash.Signature"><span class="pre">Signature</span></a></span></span><a class="reference internal" href="_modules/P2HNNS/methods/NHHash.html#NHHash.sampling_signature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.methods.NHHash.NHHash.sampling_signature" title="Permalink to this definition"></a></dt>
@@ -1137,13 +1147,6 @@ enabling efficient nearest neighbour searches.</p>
 <dd><p>Query) -&gt; List[IdxVal]: Performs a nearest neighbour search for a given query using the pre-built index.</p>
 </dd></dl>
 
-<dl class="simple">
-<dt>Parameters for initalization:</dt><dd><p>d (int): The original dimensionality of the data.
-m (int): The number of hash functions to use.
-s (int): The size of the sample to take from the original data dimensions.
-w (float): The width of the hash bins.</p>
-</dd>
-</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="P2HNNS.methods.NHHash.NHHash.build_index">
 <span class="sig-name descname"><span class="pre">build_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/methods/NHHash.html#NHHash.build_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.methods.NHHash.NHHash.build_index" title="Permalink to this definition"></a></dt>
@@ -1156,8 +1159,8 @@ w (float): The width of the hash bins.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id4">
-<span class="sig-name descname"><span class="pre">hash_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">array</span></span></span><a class="reference internal" href="_modules/P2HNNS/methods/NHHash.html#NHHash.hash_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id4" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">hash_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">array</span></span></span><a class="reference internal" href="_modules/P2HNNS/methods/NHHash.html#NHHash.hash_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id1" title="Permalink to this definition"></a></dt>
 <dd><p>Hashes an array of data points into NH space.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1208,8 +1211,8 @@ distance function, and the number of nearest neighbors to find.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id5">
-<span class="sig-name descname"><span class="pre">sampling_signature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#P2HNNS.methods.NHHash.Signature" title="P2HNNS.methods.NHHash.Signature"><span class="pre">Signature</span></a></span></span><a class="reference internal" href="_modules/P2HNNS/methods/NHHash.html#NHHash.sampling_signature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id5" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">sampling_signature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#P2HNNS.methods.NHHash.Signature" title="P2HNNS.methods.NHHash.Signature"><span class="pre">Signature</span></a></span></span><a class="reference internal" href="_modules/P2HNNS/methods/NHHash.html#NHHash.sampling_signature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id2" title="Permalink to this definition"></a></dt>
 <dd><p>Projects a data point into the NH space and returns its signature.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
