@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>P2HNNS.utils package &mdash; P2HNNS 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="P2HNNS.methods package" href="P2HNNS.methods.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> P2HNNS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">P2HNNS</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="P2HNNS.html">P2HNNS package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="P2HNNS.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="P2HNNS.methods.html">P2HNNS.methods package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">P2HNNS.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="P2HNNS.html#module-P2HNNS">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">P2HNNS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">P2HNNS</a></li>
+          <li class="breadcrumb-item"><a href="P2HNNS.html">P2HNNS package</a></li>
+      <li class="breadcrumb-item active">P2HNNS.utils package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/P2HNNS.utils.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="p2hnns-utils-package">
+<h1>P2HNNS.utils package<a class="headerlink" href="#p2hnns-utils-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-P2HNNS.utils.FHQuery">
+<span id="p2hnns-utils-fhquery-module"></span><h2>P2HNNS.utils.FHQuery module<a class="headerlink" href="#module-P2HNNS.utils.FHQuery" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="P2HNNS.utils.FHQuery.FHQuery">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">P2HNNS.utils.FHQuery.</span></span><span class="sig-name descname"><span class="pre">FHQuery</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/FHQuery.html#FHQuery"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.FHQuery.FHQuery" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#P2HNNS.utils.Query.Query" title="P2HNNS.utils.Query.Query"><code class="xref py py-class docutils literal notranslate"><span class="pre">Query</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.FHQuery.FHQuery.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dist</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/FHQuery.html#FHQuery.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.FHQuery.FHQuery.copy" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a deep copy of this Query instance, allowing for the specification of a new distance function,
+while preserving the query, data, top, and limit parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dist</strong> (<a class="reference internal" href="#P2HNNS.utils.distance_functions.Dist" title="P2HNNS.utils.distance_functions.Dist"><em>Dist</em></a>) – The new distance function to use in the copied Query instance.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A new Query instance with the same query, data, top, and limit parameters, but using the</dt><dd><p>specified distance function.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#P2HNNS.utils.Query.Query" title="P2HNNS.utils.Query.Query">Query</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-P2HNNS.utils.HashBucket">
+<span id="p2hnns-utils-hashbucket-module"></span><h2>P2HNNS.utils.HashBucket module<a class="headerlink" href="#module-P2HNNS.utils.HashBucket" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="P2HNNS.utils.HashBucket.HashBucket">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">P2HNNS.utils.HashBucket.</span></span><span class="sig-name descname"><span class="pre">HashBucket</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/HashBucket.html#HashBucket"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.HashBucket.HashBucket" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Implements a hash bucket system for efficiently managing and querying data using multiple hash tables.
+The class supports inserting data items and searching for items based on a query code, utilizing bitwise
+operations for hash code generation and management.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.HashBucket.HashBucket.l">
+<span class="sig-name descname"><span class="pre">l</span></span><a class="headerlink" href="#P2HNNS.utils.HashBucket.HashBucket.l" title="Permalink to this definition"></a></dt>
+<dd><p>The number of hash tables (buckets) to be used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.HashBucket.HashBucket.mask">
+<span class="sig-name descname"><span class="pre">mask</span></span><a class="headerlink" href="#P2HNNS.utils.HashBucket.HashBucket.mask" title="Permalink to this definition"></a></dt>
+<dd><p>A bitmask used to ensure hash codes fit within a certain range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.HashBucket.HashBucket.buckets">
+<span class="sig-name descname"><span class="pre">buckets</span></span><a class="headerlink" href="#P2HNNS.utils.HashBucket.HashBucket.buckets" title="Permalink to this definition"></a></dt>
+<dd><p>A list of hash tables for storing data items, where each hash table
+is implemented as a defaultdict(list) for flexibility and efficiency.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List[defaultdict[list]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> (<em>int</em>) – The expected size of the dataset, used to determine the range of hash codes.</p></li>
+<li><p><strong>l</strong> (<em>int</em>) – The number of hash tables (buckets) to create for data storage.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">insert(self,</span> <span class="pre">key</span></span></dt>
+<dd><p>int, dcode: np.array): Inserts a data item into the hash buckets.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.HashBucket.HashBucket.search">
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qcode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">consumer</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/HashBucket.html#HashBucket.search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.HashBucket.HashBucket.search" title="Permalink to this definition"></a></dt>
+<dd><p>Searches for data items that match a query code.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.HashBucket.HashBucket.get_or_empty">
+<span class="sig-name descname"><span class="pre">get_or_empty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bucket</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hashcode32</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/HashBucket.html#HashBucket.get_or_empty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.HashBucket.HashBucket.get_or_empty" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieves items from a bucket based on a hash code,
+returning an empty list if no items are found.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.HashBucket.HashBucket.swap">
+<span class="sig-name descname"><span class="pre">swap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bs_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aidx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bidx</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/HashBucket.html#HashBucket.swap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.HashBucket.HashBucket.swap" title="Permalink to this definition"></a></dt>
+<dd><p>Swaps items between two lists at specified indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.HashBucket.HashBucket.get_or_insert">
+<span class="sig-name descname"><span class="pre">get_or_insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/HashBucket.html#HashBucket.get_or_insert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.HashBucket.HashBucket.get_or_insert" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieves or initializes a list in a map for a given index.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.HashBucket.HashBucket.is_empty">
+<span class="sig-name descname"><span class="pre">is_empty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/HashBucket.html#HashBucket.is_empty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.HashBucket.HashBucket.is_empty" title="Permalink to this definition"></a></dt>
+<dd><p>Returns True if no data has been added to the HashBucket, otherwise False.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">get_or_empty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bucket</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hashcode32</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/HashBucket.html#HashBucket.get_or_empty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieves the list of items associated with a hash code from a bucket, or an empty list if no items are found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bucket</strong> (<em>defaultdict</em><em>[</em><em>list</em><em>]</em>) – The bucket from which to retrieve items.</p></li>
+<li><p><strong>hashcode32</strong> (<em>int</em>) – The hash code used to look up items in the bucket.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The list of items associated with the hash code, or an empty list if none are found.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">get_or_insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">map_obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/HashBucket.html#HashBucket.get_or_insert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id1" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieves a list from a map object for a given index. If the index does not exist, a new list is initialized.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>map_obj</strong> (<em>defaultdict</em><em>[</em><em>list</em><em>]</em>) – The map from which to retrieve or initialize the list.</p></li>
+<li><p><strong>idx</strong> (<em>int</em>) – The index for which to retrieve or initialize the list.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The list associated with the given index in the map object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.HashBucket.HashBucket.insert">
+<span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dcode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/HashBucket.html#HashBucket.insert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.HashBucket.HashBucket.insert" title="Permalink to this definition"></a></dt>
+<dd><p>Inserts a data item identified by a key into the hash buckets using the provided hash codes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>int</em>) – The identifier for the data item to be inserted.</p></li>
+<li><p><strong>dcode</strong> (<em>np.array</em>) – An array of hash codes for the data item, one for each hash table.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">is_empty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/HashBucket.html#HashBucket.is_empty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id2" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if the HashBucket is empty.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if no data has been added to any of the hash tables, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qcode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">consumer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/HashBucket.html#HashBucket.search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id3" title="Permalink to this definition"></a></dt>
+<dd><p>Searches for data items that match the query code, using a consumer function to process each found item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qcode</strong> – The query code used to search for matching data items.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – The maximum number of candidate items to find before stopping the search.</p></li>
+<li><p><strong>consumer</strong> (<em>Callable</em>) – A function to be called for each data item found during the search.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dictionary with keys as item identifiers and values as the count of matches.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>defaultdict[int, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">swap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">as_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bs_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aidx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bidx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/HashBucket.html#HashBucket.swap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id4" title="Permalink to this definition"></a></dt>
+<dd><p>Swaps items between two lists at specified indices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>as_list</strong> (<em>list</em>) – The first list from which an item will be swapped.</p></li>
+<li><p><strong>bs_list</strong> (<em>list</em>) – The second list with which an item from the first list will be swapped.</p></li>
+<li><p><strong>aidx</strong> (<em>int</em>) – The index in the first list of the item to swap.</p></li>
+<li><p><strong>bidx</strong> (<em>int</em>) – The index in the second list of the item to swap.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-P2HNNS.utils.IdxVal">
+<span id="p2hnns-utils-idxval-module"></span><h2>P2HNNS.utils.IdxVal module<a class="headerlink" href="#module-P2HNNS.utils.IdxVal" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="P2HNNS.utils.IdxVal.IdxVal">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">P2HNNS.utils.IdxVal.</span></span><span class="sig-name descname"><span class="pre">IdxVal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/IdxVal.html#IdxVal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.IdxVal.IdxVal" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represents an ordered pair consisting of an index and a value, where ordering is primarily based on the value,
+and secondarily (in case of equal values) on the index. This class supports comparison operations allowing
+objects of this class to be sorted or compared directly.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.IdxVal.IdxVal.idx">
+<span class="sig-name descname"><span class="pre">idx</span></span><a class="headerlink" href="#P2HNNS.utils.IdxVal.IdxVal.idx" title="Permalink to this definition"></a></dt>
+<dd><p>The index part of the ordered pair.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.IdxVal.IdxVal.value">
+<span class="sig-name descname"><span class="pre">value</span></span><a class="headerlink" href="#P2HNNS.utils.IdxVal.IdxVal.value" title="Permalink to this definition"></a></dt>
+<dd><p>The value part of the ordered pair, can be of any type that supports comparison operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.IdxVal.IdxVal.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/IdxVal.html#IdxVal.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.IdxVal.IdxVal.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Initializes a new instance of IdxVal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.IdxVal.IdxVal.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/IdxVal.html#IdxVal.__eq__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.IdxVal.IdxVal.__eq__" title="Permalink to this definition"></a></dt>
+<dd><p>Checks equality between this object and another based on their values and indices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.IdxVal.IdxVal.__lt__">
+<span class="sig-name descname"><span class="pre">__lt__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/IdxVal.html#IdxVal.__lt__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.IdxVal.IdxVal.__lt__" title="Permalink to this definition"></a></dt>
+<dd><p>Defines the less-than ordering between this object and another.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.IdxVal.IdxVal.__repr__">
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/IdxVal.html#IdxVal.__repr__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.IdxVal.IdxVal.__repr__" title="Permalink to this definition"></a></dt>
+<dd><p>Returns an unambiguous string representation of this object.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-P2HNNS.utils.Query">
+<span id="p2hnns-utils-query-module"></span><h2>P2HNNS.utils.Query module<a class="headerlink" href="#module-P2HNNS.utils.Query" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="P2HNNS.utils.Query.Query">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">P2HNNS.utils.Query.</span></span><span class="sig-name descname"><span class="pre">Query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#P2HNNS.utils.distance_functions.Dist" title="P2HNNS.utils.distance_functions.Dist"><span class="pre">Dist</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/Query.html#Query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.Query.Query" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represents a query for point-to-hyperplane nearest neighbor searches. This class encapsulates the details
+of the query hyperplane, the dataset against which the query is executed, and parameters such as the number
+of top results to return and a limit for search optimization.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.Query.Query.query">
+<span class="sig-name descname"><span class="pre">query</span></span><a class="headerlink" href="#P2HNNS.utils.Query.Query.query" title="Permalink to this definition"></a></dt>
+<dd><p>The hyperplane coefficients representing the query.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.Query.Query.data">
+<span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#P2HNNS.utils.Query.Query.data" title="Permalink to this definition"></a></dt>
+<dd><p>The dataset array against which the query will be executed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.Query.Query.top">
+<span class="sig-name descname"><span class="pre">top</span></span><a class="headerlink" href="#P2HNNS.utils.Query.Query.top" title="Permalink to this definition"></a></dt>
+<dd><p>The number of top nearest neighbors to return.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.Query.Query.limit">
+<span class="sig-name descname"><span class="pre">limit</span></span><a class="headerlink" href="#P2HNNS.utils.Query.Query.limit" title="Permalink to this definition"></a></dt>
+<dd><p>A limit for search optimization, possibly affecting the search algorithm’s performance or accuracy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.Query.Query.dist">
+<span class="sig-name descname"><span class="pre">dist</span></span><a class="headerlink" href="#P2HNNS.utils.Query.Query.dist" title="Permalink to this definition"></a></dt>
+<dd><p>The distance function used to calculate distances between points and the hyperplane.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#P2HNNS.utils.distance_functions.Dist" title="P2HNNS.utils.distance_functions.Dist">Dist</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>np.array</em>) – An array representing the query hyperplane.</p></li>
+<li><p><strong>data</strong> (<em>np.ndarray</em>) – The dataset to search against.</p></li>
+<li><p><strong>top</strong> (<em>int</em>) – The number of nearest neighbors to find.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – A search optimization parameter.</p></li>
+<li><p><strong>dist</strong> (<a class="reference internal" href="#P2HNNS.utils.distance_functions.Dist" title="P2HNNS.utils.distance_functions.Dist"><em>Dist</em></a>) – An instance of a distance function class used for calculating distances.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">copy(self,</span> <span class="pre">dist</span></span></dt>
+<dd><p>Dist) -&gt; ‘Query’:
+Creates a deep copy of the current Query instance with a new distance function.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.Query.Query.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#P2HNNS.utils.distance_functions.Dist" title="P2HNNS.utils.distance_functions.Dist"><span class="pre">Dist</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#P2HNNS.utils.Query.Query" title="P2HNNS.utils.Query.Query"><span class="pre">Query</span></a></span></span><a class="reference internal" href="_modules/P2HNNS/utils/Query.html#Query.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.Query.Query.copy" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a deep copy of this Query instance, allowing for the specification of a new distance function,
+while preserving the query, data, top, and limit parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dist</strong> (<a class="reference internal" href="#P2HNNS.utils.distance_functions.Dist" title="P2HNNS.utils.distance_functions.Dist"><em>Dist</em></a>) – The new distance function to use in the copied Query instance.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A new Query instance with the same query, data, top, and limit parameters, but using the</dt><dd><p>specified distance function.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#P2HNNS.utils.Query.Query" title="P2HNNS.utils.Query.Query">Query</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-P2HNNS.utils.RQALSH">
+<span id="p2hnns-utils-rqalsh-module"></span><h2>P2HNNS.utils.RQALSH module<a class="headerlink" href="#module-P2HNNS.utils.RQALSH" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.CountParam">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">P2HNNS.utils.RQALSH.</span></span><span class="sig-name descname"><span class="pre">CountParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/RQALSH.html#CountParam"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.RQALSH.CountParam" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Encapsulates parameters for the counting process in RQALSH.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.CountParam.n">
+<span class="sig-name descname"><span class="pre">n</span></span><a class="headerlink" href="#P2HNNS.utils.RQALSH.CountParam.n" title="Permalink to this definition"></a></dt>
+<dd><p>The number of data points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.CountParam.m">
+<span class="sig-name descname"><span class="pre">m</span></span><a class="headerlink" href="#P2HNNS.utils.RQALSH.CountParam.m" title="Permalink to this definition"></a></dt>
+<dd><p>The number of hash tables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.CountParam.freq">
+<span class="sig-name descname"><span class="pre">freq</span></span><a class="headerlink" href="#P2HNNS.utils.RQALSH.CountParam.freq" title="Permalink to this definition"></a></dt>
+<dd><p>A frequency list to track the number of occurrences for each data point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List[int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.CountParam.rangeflag">
+<span class="sig-name descname"><span class="pre">rangeflag</span></span><a class="headerlink" href="#P2HNNS.utils.RQALSH.CountParam.rangeflag" title="Permalink to this definition"></a></dt>
+<dd><p>Flags to indicate if a data point is within the search range in each hash table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List[bool]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.CountParam.bucketflag">
+<span class="sig-name descname"><span class="pre">bucketflag</span></span><a class="headerlink" href="#P2HNNS.utils.RQALSH.CountParam.bucketflag" title="Permalink to this definition"></a></dt>
+<dd><p>Flags to indicate if a data point is within the current bucket being scanned in each hash table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List[bool]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.CountParam.checked">
+<span class="sig-name descname"><span class="pre">checked</span></span><a class="headerlink" href="#P2HNNS.utils.RQALSH.CountParam.checked" title="Permalink to this definition"></a></dt>
+<dd><p>Flags to indicate if a data point has been checked.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List[bool]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.CountParam.rangeval">
+<span class="sig-name descname"><span class="pre">rangeval</span></span><a class="headerlink" href="#P2HNNS.utils.RQALSH.CountParam.rangeval" title="Permalink to this definition"></a></dt>
+<dd><p>The value representing the search range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.CountParam.bucket">
+<span class="sig-name descname"><span class="pre">bucket</span></span><a class="headerlink" href="#P2HNNS.utils.RQALSH.CountParam.bucket" title="Permalink to this definition"></a></dt>
+<dd><p>The number of buckets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.CountParam.radius">
+<span class="sig-name descname"><span class="pre">radius</span></span><a class="headerlink" href="#P2HNNS.utils.RQALSH.CountParam.radius" title="Permalink to this definition"></a></dt>
+<dd><p>The search radius.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.CountParam.width">
+<span class="sig-name descname"><span class="pre">width</span></span><a class="headerlink" href="#P2HNNS.utils.RQALSH.CountParam.width" title="Permalink to this definition"></a></dt>
+<dd><p>The bucket width.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.CountParam.cands">
+<span class="sig-name descname"><span class="pre">cands</span></span><a class="headerlink" href="#P2HNNS.utils.RQALSH.CountParam.cands" title="Permalink to this definition"></a></dt>
+<dd><p>A list of candidate data points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.RQALSH">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">P2HNNS.utils.RQALSH.</span></span><span class="sig-name descname"><span class="pre">RQALSH</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#P2HNNS.utils.IdxVal.IdxVal" title="P2HNNS.utils.IdxVal.IdxVal"><span class="pre">IdxVal</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scan_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1600</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/RQALSH.html#RQALSH"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.RQALSH.RQALSH" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Implements the Reverse Query-Aware Locality Sensitive Hashing algorithm.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.RQALSH.n">
+<span class="sig-name descname"><span class="pre">n</span></span><a class="headerlink" href="#P2HNNS.utils.RQALSH.RQALSH.n" title="Permalink to this definition"></a></dt>
+<dd><p>The number of data points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.RQALSH.dim">
+<span class="sig-name descname"><span class="pre">dim</span></span><a class="headerlink" href="#P2HNNS.utils.RQALSH.RQALSH.dim" title="Permalink to this definition"></a></dt>
+<dd><p>The dimensionality of the data points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.RQALSH.m">
+<span class="sig-name descname"><span class="pre">m</span></span><a class="headerlink" href="#P2HNNS.utils.RQALSH.RQALSH.m" title="Permalink to this definition"></a></dt>
+<dd><p>The number of hash tables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.RQALSH.index">
+<span class="sig-name descname"><span class="pre">index</span></span><a class="headerlink" href="#P2HNNS.utils.RQALSH.RQALSH.index" title="Permalink to this definition"></a></dt>
+<dd><p>The indices of the data points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.RQALSH.scan_size">
+<span class="sig-name descname"><span class="pre">scan_size</span></span><a class="headerlink" href="#P2HNNS.utils.RQALSH.RQALSH.scan_size" title="Permalink to this definition"></a></dt>
+<dd><p>The number of points to scan in each hash table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.RQALSH.check_error">
+<span class="sig-name descname"><span class="pre">check_error</span></span><a class="headerlink" href="#P2HNNS.utils.RQALSH.RQALSH.check_error" title="Permalink to this definition"></a></dt>
+<dd><p>The error tolerance for checking candidates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.RQALSH.a">
+<span class="sig-name descname"><span class="pre">a</span></span><a class="headerlink" href="#P2HNNS.utils.RQALSH.RQALSH.a" title="Permalink to this definition"></a></dt>
+<dd><p>The generated hash functions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.RQALSH.tables">
+<span class="sig-name descname"><span class="pre">tables</span></span><a class="headerlink" href="#P2HNNS.utils.RQALSH.RQALSH.tables" title="Permalink to this definition"></a></dt>
+<dd><p>The hash tables storing data points and their hash values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">calc_hash_value,</span> <span class="pre">calc_hash_value_1,</span> <span class="pre">calc_hash_value_2</span></span></dt>
+<dd><p>Calculate hash values for data points.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.RQALSH.get_search_position">
+<span class="sig-name descname"><span class="pre">get_search_position</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/RQALSH.html#RQALSH.get_search_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.RQALSH.RQALSH.get_search_position" title="Permalink to this definition"></a></dt>
+<dd><p>Determine the search positions for a given query in the hash tables.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.RQALSH.find_radius">
+<span class="sig-name descname"><span class="pre">find_radius</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/RQALSH.html#RQALSH.find_radius"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.RQALSH.RQALSH.find_radius" title="Permalink to this definition"></a></dt>
+<dd><p>Find the search radius based on the query and the data distribution.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.RQALSH.dynamic_separation_counting">
+<span class="sig-name descname"><span class="pre">dynamic_separation_counting</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/RQALSH.html#RQALSH.dynamic_separation_counting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.RQALSH.RQALSH.dynamic_separation_counting" title="Permalink to this definition"></a></dt>
+<dd><p>Dynamically count and identify candidate data points close to the query.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.RQALSH.fns">
+<span class="sig-name descname"><span class="pre">fns</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/RQALSH.html#RQALSH.fns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.RQALSH.RQALSH.fns" title="Permalink to this definition"></a></dt>
+<dd><p>Find the nearest neighbors for a given query.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.RQALSH.calc_hash_value">
+<span class="sig-name descname"><span class="pre">calc_hash_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/RQALSH.html#RQALSH.calc_hash_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.RQALSH.RQALSH.calc_hash_value" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the hash value of a given data point using a specified hash function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tid</strong> (<em>int</em>) – The index of the hash table.</p></li>
+<li><p><strong>data</strong> (<em>np.array</em>) – The data point for which the hash value is to be calculated.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The calculated hash value of the data point for the specified hash function.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.RQALSH.calc_hash_value_1">
+<span class="sig-name descname"><span class="pre">calc_hash_value_1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#P2HNNS.utils.IdxVal.IdxVal" title="P2HNNS.utils.IdxVal.IdxVal"><span class="pre">IdxVal</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/RQALSH.html#RQALSH.calc_hash_value_1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.RQALSH.RQALSH.calc_hash_value_1" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the hash value for a given data point, incorporating a last value for adjustment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>d</strong> (<em>int</em>) – The number of dimensions of the data point.</p></li>
+<li><p><strong>tid</strong> (<em>int</em>) – The index of the hash table.</p></li>
+<li><p><strong>last</strong> (<em>float</em>) – The adjustment value to be added to the hash value.</p></li>
+<li><p><strong>data</strong> (<em>List</em><em>[</em><a class="reference internal" href="#P2HNNS.utils.IdxVal.IdxVal" title="P2HNNS.utils.IdxVal.IdxVal"><em>IdxVal</em></a><em>]</em>) – The data point represented as a list of index-value pairs.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The calculated hash value, adjusted by the last value.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.RQALSH.calc_hash_value_2">
+<span class="sig-name descname"><span class="pre">calc_hash_value_2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#P2HNNS.utils.IdxVal.IdxVal" title="P2HNNS.utils.IdxVal.IdxVal"><span class="pre">IdxVal</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/RQALSH.html#RQALSH.calc_hash_value_2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.RQALSH.RQALSH.calc_hash_value_2" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the hash value for a given data point without incorporating an adjustment value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>d</strong> (<em>int</em>) – The number of dimensions of the data point.</p></li>
+<li><p><strong>tid</strong> (<em>int</em>) – The index of the hash table.</p></li>
+<li><p><strong>data</strong> (<em>List</em><em>[</em><a class="reference internal" href="#P2HNNS.utils.IdxVal.IdxVal" title="P2HNNS.utils.IdxVal.IdxVal"><em>IdxVal</em></a><em>]</em>) – The data point represented as a list of index-value pairs.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The calculated hash value of the data point.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">dynamic_separation_counting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#P2HNNS.utils.RQALSH.SearchPosition" title="P2HNNS.utils.RQALSH.SearchPosition"><span class="pre">SearchPosition</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/RQALSH.html#RQALSH.dynamic_separation_counting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id5" title="Permalink to this definition"></a></dt>
+<dd><p>Dynamically counts and identifies candidate data points that are close to the query point using separation counting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>l</strong> (<em>int</em>) – The minimum number of occurrences across hash tables to consider a data point as a candidate.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – The maximum number of candidates to return.</p></li>
+<li><p><strong>R</strong> (<em>float</em>) – The initial search radius.</p></li>
+<li><p><strong>position</strong> (<a class="reference internal" href="#P2HNNS.utils.RQALSH.SearchPosition" title="P2HNNS.utils.RQALSH.SearchPosition"><em>SearchPosition</em></a>) – The current search positions of the query in the hash tables.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of candidate data points that are within the search radius of the query.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">find_radius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#P2HNNS.utils.RQALSH.SearchPosition" title="P2HNNS.utils.RQALSH.SearchPosition"><span class="pre">SearchPosition</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/RQALSH.html#RQALSH.find_radius"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id6" title="Permalink to this definition"></a></dt>
+<dd><p>Finds the optimal search radius based on the distances of the closest points in the hash tables to the query.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>w</strong> (<em>float</em>) – The width parameter used to adjust the search radius.</p></li>
+<li><p><strong>position</strong> (<a class="reference internal" href="#P2HNNS.utils.RQALSH.SearchPosition" title="P2HNNS.utils.RQALSH.SearchPosition"><em>SearchPosition</em></a>) – The current search positions of the query in the hash tables.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The new search radius determined based on the median of the closest distances.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">fns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampledim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#P2HNNS.utils.IdxVal.IdxVal" title="P2HNNS.utils.IdxVal.IdxVal"><span class="pre">IdxVal</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/RQALSH.html#RQALSH.fns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id7" title="Permalink to this definition"></a></dt>
+<dd><p>Finds the nearest neighbors to a given query within a specified radius.</p>
+<p>This method performs a dynamic separation counting to identify candidates and then filters these candidates based
+on the provided radius and limit criteria.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>l</strong> (<em>int</em>) – The minimum number of occurrences across hash tables to consider a data point as a candidate.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – The maximum number of candidates to return.</p></li>
+<li><p><strong>R</strong> (<em>float</em>) – The search radius within which to find nearest neighbors.</p></li>
+<li><p><strong>sampledim</strong> (<em>int</em>) – The dimensionality of the sample data points.</p></li>
+<li><p><strong>query</strong> (<em>List</em><em>[</em><a class="reference internal" href="#P2HNNS.utils.IdxVal.IdxVal" title="P2HNNS.utils.IdxVal.IdxVal"><em>IdxVal</em></a><em>]</em>) – The query represented as a list of index-value pairs.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of indices of the nearest neighbors within the specified radius to the query.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id8">
+<span class="sig-name descname"><span class="pre">get_search_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#P2HNNS.utils.IdxVal.IdxVal" title="P2HNNS.utils.IdxVal.IdxVal"><span class="pre">IdxVal</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#P2HNNS.utils.RQALSH.SearchPosition" title="P2HNNS.utils.RQALSH.SearchPosition"><span class="pre">SearchPosition</span></a></span></span><a class="reference internal" href="_modules/P2HNNS/utils/RQALSH.html#RQALSH.get_search_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id8" title="Permalink to this definition"></a></dt>
+<dd><p>Determines the initial search positions for a given query in the hash tables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sample_dim</strong> (<em>int</em>) – The dimensionality of the sample data points.</p></li>
+<li><p><strong>query</strong> (<em>List</em><em>[</em><a class="reference internal" href="#P2HNNS.utils.IdxVal.IdxVal" title="P2HNNS.utils.IdxVal.IdxVal"><em>IdxVal</em></a><em>]</em>) – The query data points.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An object representing the positions within hash tables for the given query.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#P2HNNS.utils.RQALSH.SearchPosition" title="P2HNNS.utils.RQALSH.SearchPosition">SearchPosition</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.SearchPosition">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">P2HNNS.utils.RQALSH.</span></span><span class="sig-name descname"><span class="pre">SearchPosition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">left_pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right_pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/RQALSH.html#SearchPosition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.RQALSH.SearchPosition" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represents the positions within hash tables for a query.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.SearchPosition.query_val">
+<span class="sig-name descname"><span class="pre">query_val</span></span><a class="headerlink" href="#P2HNNS.utils.RQALSH.SearchPosition.query_val" title="Permalink to this definition"></a></dt>
+<dd><p>The hash value of the query.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.SearchPosition.left_pos">
+<span class="sig-name descname"><span class="pre">left_pos</span></span><a class="headerlink" href="#P2HNNS.utils.RQALSH.SearchPosition.left_pos" title="Permalink to this definition"></a></dt>
+<dd><p>The left boundary positions in the hash tables for the query.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.RQALSH.SearchPosition.right_pos">
+<span class="sig-name descname"><span class="pre">right_pos</span></span><a class="headerlink" href="#P2HNNS.utils.RQALSH.SearchPosition.right_pos" title="Permalink to this definition"></a></dt>
+<dd><p>The right boundary positions in the hash tables for the query.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-P2HNNS.utils.RandomSampler">
+<span id="p2hnns-utils-randomsampler-module"></span><h2>P2HNNS.utils.RandomSampler module<a class="headerlink" href="#module-P2HNNS.utils.RandomSampler" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="P2HNNS.utils.RandomSampler.RandomSampler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">P2HNNS.utils.RandomSampler.</span></span><span class="sig-name descname"><span class="pre">RandomSampler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/RandomSampler.html#RandomSampler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.RandomSampler.RandomSampler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.RandomSampler.RandomSampler.probability_vector">
+<span class="sig-name descname"><span class="pre">probability_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">array</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/RandomSampler.html#RandomSampler.probability_vector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.RandomSampler.RandomSampler.probability_vector" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.RandomSampler.RandomSampler.sampling">
+<span class="sig-name descname"><span class="pre">sampling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#P2HNNS.utils.IdxVal.IdxVal" title="P2HNNS.utils.IdxVal.IdxVal"><span class="pre">IdxVal</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/RandomSampler.html#RandomSampler.sampling"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.RandomSampler.RandomSampler.sampling" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.RandomSampler.RandomSampler.search_idx_from">
+<span class="sig-name descname"><span class="pre">search_idx_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prob</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/RandomSampler.html#RandomSampler.search_idx_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.RandomSampler.RandomSampler.search_idx_from" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-P2HNNS.utils.SortedLCCS">
+<span id="p2hnns-utils-sortedlccs-module"></span><h2>P2HNNS.utils.SortedLCCS module<a class="headerlink" href="#module-P2HNNS.utils.SortedLCCS" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.CmpLoc">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">P2HNNS.utils.SortedLCCS.</span></span><span class="sig-name descname"><span class="pre">CmpLoc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">walked</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/SortedLCCS.html#CmpLoc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.CmpLoc" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Holds the result of a comparison and the distance walked during the comparison.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.CmpLoc.walked">
+<span class="sig-name descname"><span class="pre">walked</span></span><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.CmpLoc.walked" title="Permalink to this definition"></a></dt>
+<dd><p>The distance walked in the comparison process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.CmpLoc.cmp">
+<span class="sig-name descname"><span class="pre">cmp</span></span><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.CmpLoc.cmp" title="Permalink to this definition"></a></dt>
+<dd><p>The result of the comparison, indicating equality, less than, or greater than.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.Loc">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">P2HNNS.utils.SortedLCCS.</span></span><span class="sig-name descname"><span class="pre">Loc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowlen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/SortedLCCS.html#Loc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.Loc" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represents a single location in the search space.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.Loc.idx">
+<span class="sig-name descname"><span class="pre">idx</span></span><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.Loc.idx" title="Permalink to this definition"></a></dt>
+<dd><p>The index of the location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.Loc.lowlen">
+<span class="sig-name descname"><span class="pre">lowlen</span></span><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.Loc.lowlen" title="Permalink to this definition"></a></dt>
+<dd><p>The length at the lower end of the location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.Loc.highlen">
+<span class="sig-name descname"><span class="pre">highlen</span></span><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.Loc.highlen" title="Permalink to this definition"></a></dt>
+<dd><p>The length at the higher end of the location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.Locs">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">P2HNNS.utils.SortedLCCS.</span></span><span class="sig-name descname"><span class="pre">Locs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idxes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowlens</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlens</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/SortedLCCS.html#Locs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.Locs" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A container for storing indices and lengths of locations in a search space.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.Locs.idxes">
+<span class="sig-name descname"><span class="pre">idxes</span></span><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.Locs.idxes" title="Permalink to this definition"></a></dt>
+<dd><p>Indices of locations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List[int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.Locs.lowlens">
+<span class="sig-name descname"><span class="pre">lowlens</span></span><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.Locs.lowlens" title="Permalink to this definition"></a></dt>
+<dd><p>The lengths at the lower end of the locations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List[int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.Locs.highlens">
+<span class="sig-name descname"><span class="pre">highlens</span></span><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.Locs.highlens" title="Permalink to this definition"></a></dt>
+<dd><p>The lengths at the higher end of the locations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List[int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.SortedLCCS">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">P2HNNS.utils.SortedLCCS.</span></span><span class="sig-name descname"><span class="pre">SortedLCCS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scan_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/SortedLCCS.html#SortedLCCS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.SortedLCCS" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Implements Sorted Longest Circular Co-Substring (LCCS) search algorithm for multi-dimensional data.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.SortedLCCS.scan_size">
+<span class="sig-name descname"><span class="pre">scan_size</span></span><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.SortedLCCS.scan_size" title="Permalink to this definition"></a></dt>
+<dd><p>The size of the range to perform linear scans in binary search fallback.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.SortedLCCS.n">
+<span class="sig-name descname"><span class="pre">n</span></span><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.SortedLCCS.n" title="Permalink to this definition"></a></dt>
+<dd><p>The number of elements in the dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.SortedLCCS.dim">
+<span class="sig-name descname"><span class="pre">dim</span></span><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.SortedLCCS.dim" title="Permalink to this definition"></a></dt>
+<dd><p>The dimensionality of the dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.SortedLCCS.step">
+<span class="sig-name descname"><span class="pre">step</span></span><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.SortedLCCS.step" title="Permalink to this definition"></a></dt>
+<dd><p>The step size for dimensionality reduction in search.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.SortedLCCS.searchdim">
+<span class="sig-name descname"><span class="pre">searchdim</span></span><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.SortedLCCS.searchdim" title="Permalink to this definition"></a></dt>
+<dd><p>The reduced number of dimensions to be searched.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.SortedLCCS.data">
+<span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.SortedLCCS.data" title="Permalink to this definition"></a></dt>
+<dd><p>The dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.SortedLCCS.sortedidx">
+<span class="sig-name descname"><span class="pre">sortedidx</span></span><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.SortedLCCS.sortedidx" title="Permalink to this definition"></a></dt>
+<dd><p>Indices of elements sorted per dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List[List[int]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.SortedLCCS.nextidx">
+<span class="sig-name descname"><span class="pre">nextidx</span></span><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.SortedLCCS.nextidx" title="Permalink to this definition"></a></dt>
+<dd><p>Links to next elements for dimensionality-reduced search.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List[List[int]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.SortedLCCS.binary_search_loc">
+<span class="sig-name descname"><span class="pre">binary_search_loc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#P2HNNS.utils.SortedLCCS.Loc" title="P2HNNS.utils.SortedLCCS.Loc"><span class="pre">Loc</span></a></span></span><a class="reference internal" href="_modules/P2HNNS/utils/SortedLCCS.html#SortedLCCS.binary_search_loc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.SortedLCCS.binary_search_loc" title="Permalink to this definition"></a></dt>
+<dd><p>Uses binary search to find the approximate location of a query in the dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>np.array</em>) – The query array.</p></li>
+<li><p><strong>query_dim</strong> (<em>int</em>) – The dimension of the query.</p></li>
+<li><p><strong>low</strong> (<em>int</em>) – The lower bound of the search range.</p></li>
+<li><p><strong>low_len</strong> (<em>int</em>) – The length at the lower bound.</p></li>
+<li><p><strong>high</strong> (<em>int</em>) – The upper bound of the search range.</p></li>
+<li><p><strong>high_len</strong> (<em>int</em>) – The length at the upper bound.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The located position of the query in the search space.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#P2HNNS.utils.SortedLCCS.Loc" title="P2HNNS.utils.SortedLCCS.Loc">Loc</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.SortedLCCS.candidates_by_scan">
+<span class="sig-name descname"><span class="pre">candidates_by_scan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scan_step</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/SortedLCCS.html#SortedLCCS.candidates_by_scan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.SortedLCCS.candidates_by_scan" title="Permalink to this definition"></a></dt>
+<dd><p>Identifies candidate matches for the query by scanning the dataset and applies a callable to each.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scan_step</strong> (<em>int</em>) – The step size for the scan.</p></li>
+<li><p><strong>query</strong> (<em>np.array</em>) – The query array.</p></li>
+<li><p><strong>f</strong> (<em>Callable</em>) – A function to apply to each found index.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dictionary with indices of candidates and the number of times each was checked.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.SortedLCCS.cmp_function">
+<span class="sig-name descname"><span class="pre">cmp_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prev</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/SortedLCCS.html#SortedLCCS.cmp_function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.SortedLCCS.cmp_function" title="Permalink to this definition"></a></dt>
+<dd><p>Compares data at a given index with the query, used as a callback for binary search.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i</strong> (<em>int</em>) – The index in the sorted data to compare.</p></li>
+<li><p><strong>prev</strong> (<em>int</em>) – The previously walked distance in the comparison.</p></li>
+<li><p><strong>query_dim</strong> (<em>int</em>) – The dimension of the query.</p></li>
+<li><p><strong>query</strong> (<em>np.array</em>) – The query array.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The result of the comparison and the distance walked.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#P2HNNS.utils.SortedLCCS.CmpLoc" title="P2HNNS.utils.SortedLCCS.CmpLoc">CmpLoc</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.SortedLCCS.compare_dim_indices">
+<span class="sig-name descname"><span class="pre">compare_dim_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">walked</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#P2HNNS.utils.SortedLCCS.CmpLoc" title="P2HNNS.utils.SortedLCCS.CmpLoc"><span class="pre">CmpLoc</span></a></span></span><a class="reference internal" href="_modules/P2HNNS/utils/SortedLCCS.html#SortedLCCS.compare_dim_indices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.SortedLCCS.compare_dim_indices" title="Permalink to this definition"></a></dt>
+<dd><p>Compares elements at given indices of the dataset in a circular manner.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>idx1</strong> (<em>int</em>) – The index of the first element in the dataset.</p></li>
+<li><p><strong>idx2</strong> (<em>int</em>) – The index of the second element in the dataset.</p></li>
+<li><p><strong>start</strong> (<em>int</em>) – The starting dimension for comparison.</p></li>
+<li><p><strong>walked</strong> (<em>int</em>) – The initial offset in the dimension.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The result of the comparison and the total distance walked in the dimension.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#P2HNNS.utils.SortedLCCS.CmpLoc" title="P2HNNS.utils.SortedLCCS.CmpLoc">CmpLoc</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.SortedLCCS.compare_dim_lambda">
+<span class="sig-name descname"><span class="pre">compare_dim_lambda</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/SortedLCCS.html#SortedLCCS.compare_dim_lambda"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.SortedLCCS.compare_dim_lambda" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.SortedLCCS.compare_dim_vectors">
+<span class="sig-name descname"><span class="pre">compare_dim_vectors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">walked</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#P2HNNS.utils.SortedLCCS.CmpLoc" title="P2HNNS.utils.SortedLCCS.CmpLoc"><span class="pre">CmpLoc</span></a></span></span><a class="reference internal" href="_modules/P2HNNS/utils/SortedLCCS.html#SortedLCCS.compare_dim_vectors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.SortedLCCS.compare_dim_vectors" title="Permalink to this definition"></a></dt>
+<dd><p>Compares two arrays element-wise in a circular manner starting from a given index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xs</strong> (<em>np.array</em>) – The first array to compare.</p></li>
+<li><p><strong>ys</strong> (<em>np.array</em>) – The second array to compare.</p></li>
+<li><p><strong>start</strong> (<em>int</em>) – The starting index for comparison.</p></li>
+<li><p><strong>walked</strong> (<em>int</em>) – The distance already walked in the comparison.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A <cite>CmpLoc</cite> object containing the distance walked and comparison result.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#P2HNNS.utils.SortedLCCS.CmpLoc" title="P2HNNS.utils.SortedLCCS.CmpLoc">CmpLoc</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.SortedLCCS.find_matched_locs">
+<span class="sig-name descname"><span class="pre">find_matched_locs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#P2HNNS.utils.SortedLCCS.Locs" title="P2HNNS.utils.SortedLCCS.Locs"><span class="pre">Locs</span></a></span></span><a class="reference internal" href="_modules/P2HNNS/utils/SortedLCCS.html#SortedLCCS.find_matched_locs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.SortedLCCS.find_matched_locs" title="Permalink to this definition"></a></dt>
+<dd><p>Finds locations in the dataset that match the query across various dimensions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>query</strong> (<em>np.array</em>) – The query array.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A <cite>Locs</cite> object containing indices and lengths of matched locations.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#P2HNNS.utils.SortedLCCS.Locs" title="P2HNNS.utils.SortedLCCS.Locs">Locs</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.SortedLCCS.get_data">
+<span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">array</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/SortedLCCS.html#SortedLCCS.get_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.SortedLCCS.get_data" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieves data from the dataset at a given index sorted by a specific dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query_dim</strong> (<em>int</em>) – The dimension of interest.</p></li>
+<li><p><strong>idx</strong> (<em>int</em>) – The index in the sorted order.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The data row at the specified index and dimension.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.SortedLCCS.get_loc">
+<span class="sig-name descname"><span class="pre">get_loc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#P2HNNS.utils.SortedLCCS.Loc" title="P2HNNS.utils.SortedLCCS.Loc"><span class="pre">Loc</span></a></span></span><a class="reference internal" href="_modules/P2HNNS/utils/SortedLCCS.html#SortedLCCS.get_loc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.SortedLCCS.get_loc" title="Permalink to this definition"></a></dt>
+<dd><p>Finds the location of a query within the dataset using a combination of binary search and linear scan.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>np.array</em>) – The query array.</p></li>
+<li><p><strong>query_dim</strong> (<em>int</em>) – The dimension to start the search.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The location of the query.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#P2HNNS.utils.SortedLCCS.Loc" title="P2HNNS.utils.SortedLCCS.Loc">Loc</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.SortedLCCS.get_next_link">
+<span class="sig-name descname"><span class="pre">get_next_link</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/SortedLCCS.html#SortedLCCS.get_next_link"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.SortedLCCS.get_next_link" title="Permalink to this definition"></a></dt>
+<dd><p>Creates links for each element to its successor in a dimensionally reduced search space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>step</strong> (<em>int</em>) – The step size for reducing dimensionality in the search process.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of lists where each sublist contains links to the next elements in the search space.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.SortedLCCS.get_sort_idx">
+<span class="sig-name descname"><span class="pre">get_sort_idx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/SortedLCCS.html#SortedLCCS.get_sort_idx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.SortedLCCS.get_sort_idx" title="Permalink to this definition"></a></dt>
+<dd><p>Sorts indices of the dataset for each dimension based on the comparison of elements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dim</strong> (<em>int</em>) – The dimension of the dataset.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – The number of elements in the dataset.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of lists containing sorted indices for each dimension.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[List[int]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.SortedLCCS.scan_loc">
+<span class="sig-name descname"><span class="pre">scan_loc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#P2HNNS.utils.SortedLCCS.Loc" title="P2HNNS.utils.SortedLCCS.Loc"><span class="pre">Loc</span></a></span></span><a class="reference internal" href="_modules/P2HNNS/utils/SortedLCCS.html#SortedLCCS.scan_loc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.SortedLCCS.scan_loc" title="Permalink to this definition"></a></dt>
+<dd><p>Performs a linear scan to refine the location of a query within a given range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>np.array</em>) – The query array.</p></li>
+<li><p><strong>query_dim</strong> (<em>int</em>) – The dimension to query.</p></li>
+<li><p><strong>low</strong> (<em>int</em>) – The lower bound of the scan range.</p></li>
+<li><p><strong>low_len</strong> (<em>int</em>) – The length at the lower bound.</p></li>
+<li><p><strong>high</strong> (<em>int</em>) – The upper bound of the scan range.</p></li>
+<li><p><strong>high_len</strong> (<em>int</em>) – The length at the upper bound.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The location of the query after the scan.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#P2HNNS.utils.SortedLCCS.Loc" title="P2HNNS.utils.SortedLCCS.Loc">Loc</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.SortedLCCS.SortedLCCS.search">
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scan_step</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/SortedLCCS.html#SortedLCCS.search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.SortedLCCS.SortedLCCS.search" title="Permalink to this definition"></a></dt>
+<dd><p>Searches for matches to the query in the dataset and applies a callable to each match.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scan_step</strong> (<em>int</em>) – The step size for scanning in the search.</p></li>
+<li><p><strong>query</strong> (<em>np.array</em>) – The query array.</p></li>
+<li><p><strong>f</strong> (<em>Callable</em>) – A function to apply to each found index.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dictionary of checked indices and their counts.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-P2HNNS.utils.distance_functions">
+<span id="p2hnns-utils-distance-functions-module"></span><h2>P2HNNS.utils.distance_functions module<a class="headerlink" href="#module-P2HNNS.utils.distance_functions" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="P2HNNS.utils.distance_functions.Dist">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">P2HNNS.utils.distance_functions.</span></span><span class="sig-name descname"><span class="pre">Dist</span></span><a class="reference internal" href="_modules/P2HNNS/utils/distance_functions.html#Dist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.distance_functions.Dist" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Distance Extractor.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.distance_functions.Dist.distance">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/distance_functions.html#Dist.distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.distance_functions.Dist.distance" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the distance between query and data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.distance_functions.Dist.value_of">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">value_of</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/P2HNNS/utils/distance_functions.html#Dist.value_of"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.distance_functions.Dist.value_of" title="Permalink to this definition"></a></dt>
+<dd><p>Get Dist implementation based on the provided name.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="P2HNNS.utils.distance_functions.DistAbsDot">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">P2HNNS.utils.distance_functions.</span></span><span class="sig-name descname"><span class="pre">DistAbsDot</span></span><a class="reference internal" href="_modules/P2HNNS/utils/distance_functions.html#DistAbsDot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.distance_functions.DistAbsDot" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#P2HNNS.utils.distance_functions.Dist" title="P2HNNS.utils.distance_functions.Dist"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dist</span></code></a></p>
+<p>Absolute Dot Product distance.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.distance_functions.DistAbsDot.distance">
+<span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/distance_functions.html#DistAbsDot.distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.distance_functions.DistAbsDot.distance" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the distance between query and data.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="P2HNNS.utils.distance_functions.DistCos">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">P2HNNS.utils.distance_functions.</span></span><span class="sig-name descname"><span class="pre">DistCos</span></span><a class="reference internal" href="_modules/P2HNNS/utils/distance_functions.html#DistCos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.distance_functions.DistCos" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#P2HNNS.utils.distance_functions.Dist" title="P2HNNS.utils.distance_functions.Dist"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dist</span></code></a></p>
+<p>Cosine distance.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.distance_functions.DistCos.distance">
+<span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/distance_functions.html#DistCos.distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.distance_functions.DistCos.distance" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the distance between query and data.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="P2HNNS.utils.distance_functions.DistDP2H">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">P2HNNS.utils.distance_functions.</span></span><span class="sig-name descname"><span class="pre">DistDP2H</span></span><a class="reference internal" href="_modules/P2HNNS/utils/distance_functions.html#DistDP2H"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.distance_functions.DistDP2H" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#P2HNNS.utils.distance_functions.Dist" title="P2HNNS.utils.distance_functions.Dist"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dist</span></code></a></p>
+<p>Distance from a data point p to the hyperplane query q.
+DP2H aims to find the k closest data points to the hyperplane query.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="P2HNNS.utils.distance_functions.DistDP2H.distance">
+<span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/distance_functions.html#DistDP2H.distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.distance_functions.DistDP2H.distance" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the distance between query and data.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-P2HNNS.utils.operations">
+<span id="p2hnns-utils-operations-module"></span><h2>P2HNNS.utils.operations module<a class="headerlink" href="#module-P2HNNS.utils.operations" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="P2HNNS.utils.operations.concat">
+<span class="sig-prename descclassname"><span class="pre">P2HNNS.utils.operations.</span></span><span class="sig-name descname"><span class="pre">concat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/operations.html#concat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.operations.concat" title="Permalink to this definition"></a></dt>
+<dd><p>Concatenates a 1D array to each row of a 2D array, effectively adding a new dimension to the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>np.ndarray</em>) – The original 2D array.</p></li>
+<li><p><strong>dimensions</strong> (<em>np.array</em>) – The 1D array to concatenate to each row of ‘data’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The concatenated array.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>AssertionError</strong> – If the length of ‘dimensions’ does not match the number of rows in ‘data’.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="P2HNNS.utils.operations.dim">
+<span class="sig-prename descclassname"><span class="pre">P2HNNS.utils.operations.</span></span><span class="sig-name descname"><span class="pre">dim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/operations.html#dim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.operations.dim" title="Permalink to this definition"></a></dt>
+<dd><p>Determines the dimensionality of the first row of a 2D array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>np.ndarray</em>) – The data array.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The number of dimensions (columns) in the first row of ‘data’, or 0 if ‘data’ is empty.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="P2HNNS.utils.operations.dot">
+<span class="sig-prename descclassname"><span class="pre">P2HNNS.utils.operations.</span></span><span class="sig-name descname"><span class="pre">dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/operations.html#dot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.operations.dot" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the dot product of two vectors up to a specified number of dimensions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>np.array</em>) – The first vector.</p></li>
+<li><p><strong>b</strong> (<em>np.array</em>) – The second vector.</p></li>
+<li><p><strong>dimensions</strong> (<em>int</em>) – The number of dimensions to consider in the dot product calculation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The dot product of the two vectors considering only the specified dimensions.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="P2HNNS.utils.operations.dot_with_start">
+<span class="sig-prename descclassname"><span class="pre">P2HNNS.utils.operations.</span></span><span class="sig-name descname"><span class="pre">dot_with_start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/operations.html#dot_with_start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.operations.dot_with_start" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the dot product of two vectors, with the second vector’s relevant section starting from a specified index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>np.array</em>) – The first vector.</p></li>
+<li><p><strong>start</strong> (<em>int</em>) – The starting index in the second vector to begin the dot product calculation.</p></li>
+<li><p><strong>b</strong> (<em>np.array</em>) – The second vector.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The dot product of the two vectors, with the second vector’s calculation starting from ‘start’.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="P2HNNS.utils.operations.norm">
+<span class="sig-prename descclassname"><span class="pre">P2HNNS.utils.operations.</span></span><span class="sig-name descname"><span class="pre">norm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/operations.html#norm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.operations.norm" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the Euclidean norm (magnitude) of a vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>v</strong> (<em>np.array</em>) – The vector to compute the norm of.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The Euclidean norm of the vector.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="P2HNNS.utils.operations.normalize">
+<span class="sig-prename descclassname"><span class="pre">P2HNNS.utils.operations.</span></span><span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/P2HNNS/utils/operations.html#normalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#P2HNNS.utils.operations.normalize" title="Permalink to this definition"></a></dt>
+<dd><p>Normalizes the rows of a 2D array such that each row has a mean of 0 and a norm of 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>np.ndarray</em>) – The data to normalize.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The normalized data.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-P2HNNS.utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-P2HNNS.utils" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="P2HNNS.methods.html" class="btn btn-neutral float-left" title="P2HNNS.methods package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Petros Demetrakopoulos.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
