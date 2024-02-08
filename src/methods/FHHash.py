@@ -48,7 +48,6 @@ class FHHash(Hash):
         b (float): Base radius parameter for dataset division.
         m (int): Number of hash functions for RQALSH.
         max_blocks (int): Maximum number of data blocks.
-
     """
     def __init__(self, d, s, b,m, max_blocks):
         """

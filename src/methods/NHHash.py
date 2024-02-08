@@ -23,7 +23,7 @@ class Signature:
 
 class NHHash(Hash):
     """
-    Implements the Nearest Hyperplane (NH) Hashing for approximate nearest neighbor search.
+    Implements the Nearest Hyperplane (NH) Hashing method for approximate nearest neighbor search.
     This class extends a general Hash class structure, focusing on generating hash signatures by projecting
     data points onto a set of hyperplanes, and then using these signatures for efficient similarity search.
     
@@ -36,6 +36,22 @@ class NHHash(Hash):
         proja (np.array): Coefficients for linear projection in NH space.
         projb (np.array): Bias terms for linear projection in NH space.
         bucketerp (SortedLCCS): Data structure for storing and searching hashed data.
+
+    Methods:
+        sampling_signature (np.array) -> Signature: Projects a data point into the NH space and returns its signature.
+        hash_data (np.array) -> np.array: Hashes a given data point into a series of binary signatures
+                                          based on the nearest hyperplane hashing method.
+        hash_query(query: np.array) -> np.array: Hashes a query into binary signatures,
+                                                 analogous to `hash_data` but tailored for query handling.
+        build_index(data: np.ndarray): Constructs the hash index for a dataset,
+                                       enabling efficient nearest neighbour searches.
+        nns(param: Query) -> List[IdxVal]: Performs a nearest neighbour search for a given query using the pre-built index.
+
+    Parameters for initalization:
+        d (int): The original dimensionality of the data.
+        m (int): The number of hash functions to use.
+        s (int): The size of the sample to take from the original data dimensions.
+        w (float): The width of the hash bins.
     """
     def __init__(self, d: int, m: int, s: int, w: float):
         """
@@ -77,9 +93,9 @@ class NHHash(Hash):
             val = np.sum([self.proja[start + w.idx] * w.value for w in sample])
             projs[i] = val
         self.called += 1
-        return Signature(projs, self.norm(sample))
+        return Signature(projs, self._norm(sample))
 
-    def norm(self, idxvals: List[IdxVal]) -> float:
+    def _norm(self, idxvals: List[IdxVal]) -> float:
         """
         Calculates the norm of a vector represented by a list of IdxVal objects.
         
@@ -178,7 +194,7 @@ class NHHash(Hash):
 
         # Binary search signature from sorted index.
         # The more similar the signatures, the better the search results.
-        self.bucketerp.search(step, sigs, lambda key: self.accept(key, query, data, dist_fun, queue, top))
+        self.bucketerp.search(step, sigs, lambda key: self._accept(key, query, data, dist_fun, queue, top))
 
         result = []
         while not queue.empty():
@@ -188,7 +204,7 @@ class NHHash(Hash):
         result.reverse()
         return result
 
-    def accept(self, key: int, query, data, dist_fun: Dist, queue, top):
+    def _accept(self, key: int, query, data, dist_fun: Dist, queue, top):
         """
         Evaluates a candidate point for inclusion in the nearest neighbor priority queue.
         
