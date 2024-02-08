@@ -38,15 +38,6 @@ class BHHash(Hash):
         nns(param: Query) -> List[IdxVal]: Performs a nearest neighbour search for a given query using the pre-built index.
     """
     def __init__(self, d: int, m: int, l: int):
-        """
-        Initializes the BHHash instance with given dimensions and generates two sets of random vectors (randu and randv)
-        for projecting the data points onto the bilinear hyperplanes.
-
-        Parameters:
-            d (int): The dimensionality of the input data.
-            m (int): The number of hyperplanes per hash function.
-            l (int): The number of hash functions.
-        """
         self.buckets = HashBucket(d,l)
         self.m = m
         self.l = l

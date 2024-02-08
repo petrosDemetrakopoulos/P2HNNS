@@ -62,10 +62,7 @@ class FHHash(Hash):
         get_sample_query(query: np.array) -> List[IdxVal]: Transforms a query hyperplane into the furthest hyperplane space 
                                                            for querying the index.
 
-        nns(param: FHQuery) -> List[IdxVal]: Performs the nearest neighbor search for a given query in the indexed data.
-
-        _norm(idxvals: List[IdxVal]) -> float: Calculates the L2-norm squared of the feature vector 
-                                               represented by IdxVal objects.        
+        nns(param: FHQuery) -> List[IdxVal]: Performs the nearest neighbor search for a given query in the indexed data.      
     """
     def __init__(self, d, s, b,m, max_blocks):
         if b > 1.0:

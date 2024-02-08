@@ -31,9 +31,6 @@ class MHHash(Hash):
         hash_data(data: np.array) -> np.array: Hashes the input data into `l` hash signatures, one for each hash table.
 
         hash_query(query: np.array) -> np.array: Similar to `hash_data`, but hashes a query for searching the index.
-
-        _hash(query, pos) -> float: A helper method to compute the hash value of a query/data point
-                           using the generated random vectors.
     
         build_index(data): Indexes the provided dataset by hashing and storing the data points in the hash buckets.
 
