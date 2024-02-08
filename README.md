@@ -18,6 +18,9 @@ The library can be installed via the pip package manager using the following com
 pip install P2HNNS
 ```
 
+## Documentations
+Extensive documentation for using the library is available via [Read the Docs](https://p2hnns.readthedocs.io/en/latest/index.html)
+
 ## Tests
 Unit tests are written using the pytest framework for all functionalities of the library. Tests are located in the [/tests](/tests/) directory.
 
