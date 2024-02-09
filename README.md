@@ -10,7 +10,7 @@ The library implements the 5 different methods described below.
 
 The implementation is based on the original code of [HuangQiang](https://github.com/HuangQiang/P2HNNS) (implemented in C++) and [stepping1st](https://github.com/stepping1st/hyperplane-hash/tree/master)(implemented in Java).
 
-The original papers proposing each method will be explicitly provided in section [Resources](#resouces).
+The original papers proposing each method will be explicitly provided in section [Resources](#Resources).
 
 ## Installation
 The library can be installed via the pip package manager using the following command
