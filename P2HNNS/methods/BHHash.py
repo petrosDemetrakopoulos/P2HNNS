@@ -24,6 +24,7 @@ class BHHash(Hash):
         d (int): The dimensionality of the input data vectors.
         m (int): The number of hyperplanes for each hash function.
         l (int): The number of hash functions to generate.
+        n (int): The expected size of the dataset, used to determine the range of hash codes.
 
     Methods:
         hash_data(data: np.array) -> np.array: Hashes the input data array into binary hash codes 
@@ -37,8 +38,8 @@ class BHHash(Hash):
 
         nns(param: Query) -> List[IdxVal]: Performs a nearest neighbour search for a given query using the pre-built index.
     """
-    def __init__(self, d: int, m: int, l: int):
-        self.buckets = HashBucket(d,l)
+    def __init__(self, d: int, m: int, l: int, n: int):
+        self.buckets = HashBucket(n,l)
         self.m = m
         self.l = l
         size = m * l * d

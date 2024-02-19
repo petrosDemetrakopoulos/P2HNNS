@@ -10,13 +10,13 @@ from P2HNNS.utils.distance_functions import DistAbsDot
 @pytest.fixture
 def setup_ehhash():
     # Fixture to initialize EHHash object before each test
-    d, m, l = 10, 5, 3  # Example dimensions and parameters
-    ehhash = EHHash(d, m, l)
+    d, m, l, n = 10, 5, 3, 20  # Example dimensions and parameters
+    ehhash = EHHash(d, m, l, n)
     return ehhash
 
 def test_initialization():
-    d, m, l = 10, 5, 3
-    ehhash = EHHash(d, m, l)
+    d, m, l, n = 10, 5, 3, 20
+    ehhash = EHHash(d, m, l, n)
     assert ehhash.m == m
     assert ehhash.l == l
     assert ehhash.randv.shape == (m * l * d * d,)
@@ -36,15 +36,15 @@ def test_hash_query(setup_ehhash):
     assert sigs.dtype == int
 
 def test_build_index(setup_ehhash):
-    data = np.random.rand(5, 10)  # Generate random dataset with 5 samples and 10 features each
+    data = np.random.rand(20, 10)  # Generate random dataset with 20 samples and 10 features each
 
     # Mock `insert` method of the `buckets` attribute to verify it's called correctly
     setup_ehhash.buckets = MagicMock()
 
     setup_ehhash.build_index(data)
 
-    # Verify that `insert` was called 5 times, once for each data point
-    assert setup_ehhash.buckets.insert.call_count == 5
+    # Verify that `insert` was called 20 times, once for each data point
+    assert setup_ehhash.buckets.insert.call_count == 20
 
 def test_nns(setup_ehhash):
     eh_hash = setup_ehhash

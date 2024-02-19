@@ -13,7 +13,8 @@ def setup_mhhash():
     m = 5
     l = 10
     M = 2
-    mhhash = MHHash(dimension, m, l, M)
+    n = 20
+    mhhash = MHHash(dimension, m, l, M, n)
     return mhhash
 
 def test_initialization(setup_mhhash):

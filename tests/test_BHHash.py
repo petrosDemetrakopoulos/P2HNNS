@@ -10,7 +10,8 @@ def bhhash_setup():
     d = 10  # Dimensionality of the data.
     m = 5   # Number of hyperplanes per hash function.
     l = 3   # Number of hash functions.
-    bhhash = BHHash(d=d, m=m, l=l)
+    n = 20  # Expected number of data points
+    bhhash = BHHash(d=d, m=m, l=l, n=n)
     return bhhash
 
 def test_initialization(bhhash_setup):
@@ -38,7 +39,7 @@ def test_hash_query(bhhash_setup):
 
 def test_build_index(bhhash_setup):
     bhhash = bhhash_setup
-    data = np.random.rand(10, 10)
+    data = np.random.rand(20, 10)
     bhhash.build_index(data)
     assert bhhash.buckets.is_empty() is False
 

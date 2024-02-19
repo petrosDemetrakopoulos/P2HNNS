@@ -26,6 +26,7 @@ class MHHash(Hash):
         m (int): The number of hash functions per hash table.
         l (int): The number of hash tables.
         M (int): The projection dimension for each hash function.
+        n (int): The expected size of the dataset, used to determine the range of hash codes.
 
     Methods:
         hash_data(data: np.array) -> np.array: Hashes the input data into `l` hash signatures, one for each hash table.
@@ -37,13 +38,13 @@ class MHHash(Hash):
         nns(param: Query) -> List[IdxVal]: Performs a nearest neighbor search for the given query,
                                            returning the closest points based on the query parameters.
     """
-    def __init__(self, dimension: int, m: int, l: int, M: int):
+    def __init__(self, dimension: int, m: int, l: int, M: int, n: int):
         self.m = m
         self.l = l
         self.M = M
         size = m * l * M * dimension
         self.randv = np.array([np.random.normal(0.0, 1.0) for _ in range(size)])
-        self.buckets = HashBucket(dimension,l)
+        self.buckets = HashBucket(n,l)
 
     def hash_data(self, data: np.array) -> np.array:
         """

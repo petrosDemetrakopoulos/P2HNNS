@@ -23,6 +23,7 @@ class EHHash(Hash):
         d (int): The dimensionality of the input data.
         m (int): The number of hyperplanes used for hashing in each layer.
         l (int): The number of hash layers used to increase the robustness of the search.
+        n (int): The expected size of the dataset, used to determine the range of hash codes.
 
     Methods:
         hash_data(data: np.array) -> np.array: Hashes a given data point into a series of binary signatures
@@ -36,8 +37,8 @@ class EHHash(Hash):
 
         nns(param: Query) -> List[IdxVal]: Performs a nearest neighbour search for a given query using the pre-built index.
     """
-    def __init__(self, d: int, m: int, l: int):
-        self.buckets = HashBucket(d,l)
+    def __init__(self, d: int, m: int, l: int, n: int):
+        self.buckets = HashBucket(n,l)
         self.m = m
         self.l = l
         size = m * l * d * d

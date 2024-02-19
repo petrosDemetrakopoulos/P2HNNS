@@ -14,7 +14,7 @@ example_data = np.append(example_data, np.full((20,1), fill_value=1.0), axis=1)
 # recall that a line is defined by 3 contsants (thus a 3-dimensional vector):
 # A x coefficient, a y coefficient and a constant.
 example_query_hyperplane = np.array([1,1,-1]) # y + x -1 = 0
-
+n = example_data.shape[0]
 def example_FH():
     fh_index = FHHash(d=3,s=10,b = 0.5,m=10,max_blocks=1600)
     fh_index.build_index(example_data)
@@ -25,7 +25,7 @@ def example_FH():
     print(results)
 
 def example_BH():
-    bh_index = BHHash(d=3, m=2,l=10)
+    bh_index = BHHash(d=3, m=2,l=10, n=n)
     bh_index.build_index(example_data)
     query = Query(query=example_query_hyperplane, data=example_data, top=5, limit=1000, dist=DistDP2H())
     results = bh_index.nns(query)
@@ -34,7 +34,7 @@ def example_BH():
     print(results)
 
 def example_EH():
-    eh_index = EHHash(d=3, m=2, l=10)
+    eh_index = EHHash(d=3, m=2, l=10, n=n)
     eh_index.build_index(example_data)
     query = Query(query=example_query_hyperplane, data=example_data, top=5, limit=1000, dist=DistDP2H())
     results = eh_index.nns(query)
@@ -43,7 +43,7 @@ def example_EH():
     print(results)
 
 def example_MH():
-    mh_index = MHHash(dimension=3, m=10, l=2, M=2)
+    mh_index = MHHash(dimension=3, m=10, l=2, M=2, n=n)
     mh_index.build_index(example_data)
     query = Query(query=example_query_hyperplane, data=example_data, top=5, limit=1000, dist=DistAbsDot())
     results = mh_index.nns(query)

@@ -93,6 +93,7 @@
 <span class="sd">        m (int): The number of hash functions per hash table.</span>
 <span class="sd">        l (int): The number of hash tables.</span>
 <span class="sd">        M (int): The projection dimension for each hash function.</span>
+<span class="sd">        n (int): The expected size of the dataset, used to determine the range of hash codes.</span>
 
 <span class="sd">    Methods:</span>
 <span class="sd">        hash_data(data: np.array) -&gt; np.array: Hashes the input data into `l` hash signatures, one for each hash table.</span>
@@ -104,13 +105,13 @@
 <span class="sd">        nns(param: Query) -&gt; List[IdxVal]: Performs a nearest neighbor search for the given query,</span>
 <span class="sd">                                           returning the closest points based on the query parameters.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dimension</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">l</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">M</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dimension</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">l</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">M</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="n">m</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">l</span> <span class="o">=</span> <span class="n">l</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">M</span> <span class="o">=</span> <span class="n">M</span>
         <span class="n">size</span> <span class="o">=</span> <span class="n">m</span> <span class="o">*</span> <span class="n">l</span> <span class="o">*</span> <span class="n">M</span> <span class="o">*</span> <span class="n">dimension</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">randv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">)])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">buckets</span> <span class="o">=</span> <span class="n">HashBucket</span><span class="p">(</span><span class="n">dimension</span><span class="p">,</span><span class="n">l</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buckets</span> <span class="o">=</span> <span class="n">HashBucket</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">l</span><span class="p">)</span>
 
 <div class="viewcode-block" id="MHHash.hash_data"><a class="viewcode-back" href="../../../P2HNNS.methods.html#P2HNNS.methods.MHHash.MHHash.hash_data">[docs]</a>    <span class="k">def</span> <span class="nf">hash_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
